@@ -1,0 +1,177 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 de jul. de 2026, 22:35:00
+    Author     : Ryzen7RTX3050
+*/
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:Georgia,serif;
+
+}
+
+body{
+
+background:#f8f6f2;
+
+}
+
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:30px 60px;
+
+background:white;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+header h1{
+
+color:#6d4c41;
+
+}
+
+header a{
+
+text-decoration:none;
+
+color:#a05a5a;
+
+font-weight:bold;
+
+}
+
+main{
+
+width:85%;
+
+margin:40px auto;
+
+}
+
+.livro{
+
+background:#a05a5a;
+
+color:white;
+
+padding:35px;
+
+border-radius:20px;
+
+margin-bottom:40px;
+
+text-align:center;
+
+box-shadow:0 10px 20px rgba(0,0,0,.1);
+
+}
+
+.livro h2{
+
+font-size:34px;
+
+margin-bottom:10px;
+
+}
+
+.livro p{
+
+font-size:18px;
+
+opacity:.9;
+
+}
+
+.capitulos{
+
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.capitulo{
+
+background:#efe7da;
+
+padding:22px;
+
+border-radius:15px;
+
+cursor:pointer;
+
+transition:.3s;
+
+border-left:8px solid #c9a66b;
+
+}
+
+.capitulo:hover{
+
+transform:translateX(8px);
+
+box-shadow:0 8px 16px rgba(0,0,0,.08);
+
+}
+
+.capitulo h3{
+
+color:#6d4c41;
+
+margin-bottom:6px;
+
+}
+
+.capitulo p{
+
+color:#666;
+
+}
+
+.novo{
+
+background:white;
+
+border:3px dashed #c9a66b;
+
+border-radius:15px;
+
+padding:25px;
+
+text-align:center;
+
+font-size:40px;
+
+font-weight:bold;
+
+color:#a05a5a;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.novo:hover{
+
+background:#f7f2ea;
+
+}

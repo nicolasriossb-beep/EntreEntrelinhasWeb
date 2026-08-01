@@ -1,0 +1,171 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 de jul. de 2026, 21:22:21
+    Author     : Ryzen7RTX3050
+*/
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:Georgia, serif;
+
+}
+
+body{
+
+background:#f8f6f2;
+
+}
+
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:30px 60px;
+
+background:white;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+header h1{
+
+color:#5a4343;
+
+}
+
+header a{
+
+text-decoration:none;
+
+color:#8b5a5a;
+
+font-weight:bold;
+
+}
+
+main{
+
+width:85%;
+
+margin:40px auto;
+
+}
+
+.novoProjeto{
+
+margin-bottom:40px;
+
+}
+
+.novoProjeto button{
+
+width:100%;
+
+padding:20px;
+
+border:none;
+
+background:#9c5a5a;
+
+color:white;
+
+font-size:22px;
+
+border-radius:15px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.novoProjeto button:hover{
+
+background:#874848;
+
+transform:scale(1.02);
+
+}
+
+.projetos{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+
+gap:30px;
+
+}
+
+.card{
+
+background:white;
+
+padding:25px;
+
+border-radius:18px;
+
+box-shadow:0 10px 20px rgba(0,0,0,.1);
+
+transition:.3s;
+
+}
+
+.card:hover{
+
+transform:translateY(-5px);
+
+}
+
+.card h2{
+
+color:#5a4343;
+
+margin-bottom:12px;
+
+}
+
+.card p{
+
+color:#666;
+
+margin-bottom:20px;
+
+}
+
+.card button{
+
+padding:12px 18px;
+
+border:none;
+
+background:#9c5a5a;
+
+color:white;
+
+border-radius:10px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.card button:hover{
+
+background:#874848;
+
+}

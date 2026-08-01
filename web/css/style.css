@@ -1,0 +1,140 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 13 de jul. de 2026, 15:58:11
+    Author     : Ryzen7RTX3050
+*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Georgia, serif;
+}
+
+body{
+
+    background:linear-gradient(135deg,#f8f4ef,#ece5dc);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+
+}
+
+.card{
+
+    background:white;
+
+    width:500px;
+
+    padding:45px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+
+}
+
+h1{
+
+    color:#6b3d34;
+
+    font-size:48px;
+
+}
+
+h3{
+
+    margin-top:10px;
+
+    color:#666;
+
+    font-weight:normal;
+
+}
+
+.descricao{
+
+    margin:35px 0;
+
+    color:#555;
+
+    line-height:1.6;
+
+}
+
+.botao{
+
+    display:block;
+
+    text-decoration:none;
+
+    color:white;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    margin:15px auto;
+
+    width:220px;
+
+    transition:.3s;
+
+    font-size:18px;
+
+}
+
+.entrar{
+
+    background:#8b5d55;
+
+}
+
+.entrar:hover{
+
+    background:#734842;
+
+    transform:translateY(-3px);
+
+}
+
+.criar{
+
+    background:#cdb79e;
+
+    color:#333;
+
+}
+
+.criar:hover{
+
+    background:#bea589;
+
+    transform:translateY(-3px);
+
+}
+
+.cadastro{
+
+    margin-top:25px;
+
+    color:#666;
+
+}
+
+.frase{
+
+    margin-top:40px;
+
+    color:#777;
+
+    font-style:italic;
+
+}

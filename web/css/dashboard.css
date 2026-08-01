@@ -1,0 +1,214 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 de jul. de 2026, 20:22:02
+    Author     : Ryzen7RTX3050
+*/
+*{
+
+margin:0;
+
+padding:0;
+
+box-sizing:border-box;
+
+font-family:Georgia, serif;
+
+}
+
+body{
+
+background:#f8f6f2;
+
+}
+
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:25px 50px;
+
+background:white;
+
+box-shadow:0px 5px 15px rgba(0,0,0,.08);
+
+}
+
+header h1{
+
+color:#5c3d3d;
+
+}
+
+nav{
+
+display:flex;
+
+gap:30px;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:#555;
+
+font-weight:bold;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#a25656;
+
+}
+
+main{
+
+width:80%;
+
+margin:auto;
+
+padding:50px 0;
+
+}
+
+.boasVindas{
+
+margin-bottom:45px;
+
+}
+
+.boasVindas h2{
+
+font-size:40px;
+
+color:#4b3b3b;
+
+margin-bottom:10px;
+
+}
+
+.boasVindas p{
+
+font-size:20px;
+
+color:#666;
+
+}
+
+.novoProjeto{
+
+margin-bottom:45px;
+
+}
+
+.novoProjeto button{
+
+width:100%;
+
+padding:22px;
+
+font-size:22px;
+
+border:none;
+
+border-radius:15px;
+
+background:#a25656;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.novoProjeto button:hover{
+
+background:#8a4545;
+
+transform:scale(1.02);
+
+}
+
+.carrossel{
+
+margin-bottom:45px;
+
+}
+
+.card{
+
+margin-top:20px;
+
+background:white;
+
+padding:30px;
+
+border-radius:15px;
+
+box-shadow:0px 10px 20px rgba(0,0,0,.08);
+
+font-size:20px;
+
+font-style:italic;
+
+}
+
+.avaliacao{
+
+margin-bottom:45px;
+
+background:white;
+
+padding:30px;
+
+border-radius:15px;
+
+box-shadow:0px 10px 20px rgba(0,0,0,.08);
+
+}
+
+.avaliacao a{
+
+display:inline-block;
+
+margin-top:15px;
+
+padding:12px 20px;
+
+background:#a25656;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:10px;
+
+}
+
+.sobre{
+
+background:white;
+
+padding:30px;
+
+border-radius:15px;
+
+box-shadow:0px 10px 20px rgba(0,0,0,.08);
+
+line-height:1.8;
+
+}
+

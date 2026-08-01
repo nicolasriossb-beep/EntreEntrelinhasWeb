@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/cadastro.css">
+    </head>
+    <body>
+
+    <main class="container">
+
+        <section class="card">
+
+            <div class="titulo">
+
+                <h1>📖 Entre Entrelinhas</h1>
+
+                <h2>Abra um novo capítulo.</h2>
+
+                <p class="descricao">
+                    Crie sua conta e comece a organizar personagens,
+                    capítulos, locais e todas as ideias da sua próxima história.
+                </p>
+
+            </div>
+
+            <form action="../CadastroServlet" method="post">
+
+                <div class="campo">
+                    <label>Nome Completo</label>
+                    <input type="text"
+                           name=nomeCompleto
+                           placeholder="Digite seu nome"
+                           required>
+                </div>
+
+                <div class="campo">
+                    <label>E-mail</label>
+                    <input type="email"
+                           name="email"
+                           placeholder="Digite seu e-mail"
+                           required>
+                </div>
+
+                <div class="campo">
+                    <label>Nome de usuário</label>
+                    <input type="text" 
+                           name=nomeUsuario
+                           placeholder="Escolha um usuário"
+                           required>
+                </div>
+
+                <div class="campo">
+                    <label>Senha</label>
+                    <input type="password" 
+                           name=senha
+                           placeholder="Digite sua senha"
+                           required>
+                </div>
+
+                <div class="campo">
+                    <label>Confirmar senha</label>
+                    <input type="password" 
+                           name=confirmarSenha
+                           placeholder="Repita sua senha"
+                           required>
+                </div>
+
+                <button type="submit">
+                    Criar Conta
+                </button>
+
+            </form>
+
+            <div class="login">
+
+                <p>Já possui uma conta?</p>
+
+                <a href="logins.html">
+                    Entrar
+                </a>
+                
+            </div>
+            <a href="../index.html" class="voltar">
+        ← Voltar para a página inicial
+                    </a>
+
+            <p class="frase">
+                "Toda grande história começou com uma página em branco."
+            </p>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

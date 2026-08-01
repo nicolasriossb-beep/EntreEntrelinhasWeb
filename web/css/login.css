@@ -1,0 +1,195 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 16 de jul. de 2026, 16:21:52
+    Author     : Ryzen7RTX3050
+*/
+body{
+
+    margin:0;
+    padding:0;
+
+    font-family:Georgia, serif;
+
+    background:#f8f6f2;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:100vh;
+
+}
+
+.login-container{
+
+    background:white;
+
+    width:430px;
+
+    padding:45px;
+
+    border-radius:18px;
+
+    box-shadow:0px 10px 30px rgba(0,0,0,0.12);
+
+    text-align:center;
+
+}
+
+.logo{
+
+    font-size:55px;
+
+    margin-bottom:15px;
+
+}
+
+h1{
+
+    color:#4d3b38;
+
+    margin-bottom:10px;
+
+    font-size:36px;
+
+}
+
+.subtitulo{
+
+    color:#666;
+
+    margin-bottom:35px;
+
+    font-size:18px;
+
+}
+
+form{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+label{
+
+    text-align:left;
+
+    margin-top:15px;
+
+    margin-bottom:8px;
+
+    color:#555;
+
+    font-weight:bold;
+
+}
+
+input{
+
+    padding:14px;
+
+    border-radius:10px;
+
+    border:1px solid #ccc;
+
+    font-size:16px;
+
+    transition:0.3s;
+
+}
+
+input:focus{
+
+    outline:none;
+
+    border-color:#b05d5d;
+
+    box-shadow:0px 0px 8px rgba(176,93,93,.25);
+
+}
+
+button{
+
+    margin-top:30px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#b05d5d;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+button:hover{
+
+    background:#944848;
+
+    transform:translateY(-2px);
+
+}
+
+.links{
+
+    margin-top:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.links a{
+
+    text-decoration:none;
+
+    color:#7b5c5c;
+
+    font-weight:bold;
+
+    transition:.3s;
+
+}
+
+.links a:hover{
+
+    color:#b05d5d;
+
+}
+
+.voltar{
+
+    display:inline-block;
+
+    margin-top:35px;
+
+    text-decoration:none;
+
+    color:#666;
+
+    transition:.3s;
+
+}
+
+.voltar:hover{
+
+    color:#b05d5d;
+
+}

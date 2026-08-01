@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/login.css">
+    </head>
+    <body>
+        <div class="login-container">
+
+    <div class="logo">
+        📖
+    </div>
+
+    <h1>Bem-vindo de volta</h1>
+
+    <p class="subtitulo">
+        Continue exatamente de onde sua história parou.
+    </p>
+
+    <form action="../LoginServlet" method="post">
+
+        <label>E-mail</label>
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Digite seu e-mail"
+            required
+        >
+
+        <label>Senha</label>
+
+        <input
+            type="password"
+            placeholder="Digite sua senha"
+            name="senha"
+            required
+        >
+
+        <button type="submit">
+            Entrar
+        </button>
+
+    </form>
+
+    <div class="links">
+
+        <a href="#">
+            Esqueceu sua senha?
+        </a>
+
+        <a href="cadastros.html">
+            Criar uma conta
+        </a>
+
+    </div>
+
+    <a href="../index.html" class="voltar">
+        ← Voltar para a página inicial
+    </a>
+
+</div>
+    </body>
+</html>
