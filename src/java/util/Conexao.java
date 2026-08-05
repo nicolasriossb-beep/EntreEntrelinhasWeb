@@ -8,31 +8,64 @@ package util;
  *
  * @author Ryzen7RTX3050
  */
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 public class Conexao {
-    
+
     private static final String URL =
-        "jdbc:sqlserver://THALES\\SQLEXPRESS;databaseName=EntreEntrelinhasWeb;encrypt=true;trustServerCertificate=true";
-
-    private static final String USUARIO = "sa";
-
-    private static final String SENHA = "";
+        "jdbc:sqlserver://THALES\\SQLEXPRESS;"
+        + "databaseName=EntreEntrelinhasWeb;"
+        + "encrypt=true;"
+        + "trustServerCertificate=true";
 
     public static Connection conectar() throws SQLException {
-        
-        try {
-            
-           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
-        return DriverManager.getConnection(URL, USUARIO, SENHA);
-        
-        } catch (ClassNotFoundException e) {
-        throw new SQLException("Driver JDBC não encontrado.", e);
+        Properties propriedades = new Properties();
+
+        try (InputStream arquivo = Conexao.class
+                .getClassLoader()
+                .getResourceAsStream("util/config.properties")) {
+
+            if (arquivo == null) {
+                throw new SQLException(
+                    "Arquivo config.properties não encontrado."
+                );
+            }
+
+            propriedades.load(arquivo);
+
+        } catch (IOException e) {
+            throw new SQLException(
+                "Erro ao ler o arquivo de configuração.", e
+            );
         }
 
+        String usuario = propriedades.getProperty("usuario");
+        String senha = propriedades.getProperty("senha");
+
+        try {
+
+            Class.forName(
+                "com.microsoft.sqlserver.jdbc.SQLServerDriver"
+            );
+
+            return DriverManager.getConnection(
+                URL,
+                usuario,
+                senha
+            );
+
+        } catch (ClassNotFoundException e) {
+
+            throw new SQLException(
+                "Driver JDBC não encontrado.", e
+            );
+        }
     }
-    
 }

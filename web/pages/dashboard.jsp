@@ -19,11 +19,11 @@
 
             <nav>
 
-                <a href="biblioteca.html">Biblioteca</a>
+                <a href="pages/biblioteca.html">Biblioteca</a>
 
                 <a href="#">Perfil</a>
 
-                <a href="../index.html">Sair</a>
+                <a href="index.html">Sair</a>
 
             </nav>
 
