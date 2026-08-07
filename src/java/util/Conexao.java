@@ -19,10 +19,7 @@ import java.util.Properties;
 public class Conexao {
 
     private static final String URL =
-        "jdbc:sqlserver://THALES\\SQLEXPRESS;"
-        + "databaseName=EntreEntrelinhasWeb;"
-        + "encrypt=true;"
-        + "trustServerCertificate=true";
+    "jdbc:postgresql://localhost:5432/EntreEntrelinhasWeb";
 
     public static Connection conectar() throws SQLException {
 
@@ -51,9 +48,9 @@ public class Conexao {
 
         try {
 
-            Class.forName(
-                "com.microsoft.sqlserver.jdbc.SQLServerDriver"
-            );
+           Class.forName(
+    "org.postgresql.Driver"
+                        );
 
             return DriverManager.getConnection(
                 URL,
