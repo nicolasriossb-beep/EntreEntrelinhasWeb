@@ -18,9 +18,6 @@ import java.util.Properties;
 
 public class Conexao {
 
-    private static final String URL =
-    "jdbc:postgresql://localhost:5432/EntreEntrelinhasWeb";
-
     public static Connection conectar() throws SQLException {
 
         Properties propriedades = new Properties();
@@ -43,17 +40,21 @@ public class Conexao {
             );
         }
 
+        String host = propriedades.getProperty("host");
+        String port = propriedades.getProperty("port");
+        String database = propriedades.getProperty("database");
         String usuario = propriedades.getProperty("usuario");
         String senha = propriedades.getProperty("senha");
 
+        String url = "jdbc:postgresql://" + host + ":" + port + "/"
+                + database + "?sslmode=require&channelBinding=require";
+
         try {
 
-           Class.forName(
-    "org.postgresql.Driver"
-                        );
+            Class.forName("org.postgresql.Driver");
 
             return DriverManager.getConnection(
-                URL,
+                url,
                 usuario,
                 senha
             );
