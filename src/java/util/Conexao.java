@@ -26,13 +26,9 @@ public class Conexao {
                 .getClassLoader()
                 .getResourceAsStream("util/config.properties")) {
 
-            if (arquivo == null) {
-                throw new SQLException(
-                    "Arquivo config.properties não encontrado."
-                );
+            if (arquivo != null) {
+                propriedades.load(arquivo);
             }
-
-            propriedades.load(arquivo);
 
         } catch (IOException e) {
             throw new SQLException(
@@ -40,14 +36,44 @@ public class Conexao {
             );
         }
 
-        String host = propriedades.getProperty("host");
-        String port = propriedades.getProperty("port");
-        String database = propriedades.getProperty("database");
-        String usuario = propriedades.getProperty("usuario");
-        String senha = propriedades.getProperty("senha");
+       
+
+        String host = obterConfiguracao(
+                "DB_HOST",
+                propriedades.getProperty("host")
+        );
+
+        String port = obterConfiguracao(
+                "DB_PORT",
+                propriedades.getProperty("port")
+        );
+
+        String database = obterConfiguracao(
+                "DB_DATABASE",
+                propriedades.getProperty("database")
+        );
+
+        String usuario = obterConfiguracao(
+                "DB_USER",
+                propriedades.getProperty("usuario")
+        );
+
+        String senha = obterConfiguracao(
+                "DB_PASSWORD",
+                propriedades.getProperty("senha")
+        );
+
+        if (host == null || port == null || database == null
+                || usuario == null || senha == null) {
+
+            throw new SQLException(
+                "Configuração do banco de dados incompleta."
+            );
+        }
 
         String url = "jdbc:postgresql://" + host + ":" + port + "/"
-                + database + "?sslmode=require&channelBinding=require";
+                + database
+                + "?sslmode=require&channelBinding=require";
 
         try {
 
@@ -65,5 +91,18 @@ public class Conexao {
                 "Driver JDBC não encontrado.", e
             );
         }
+    }
+
+    private static String obterConfiguracao(
+            String nomeVariavel,
+            String valorLocal) {
+
+        String valorAmbiente = System.getenv(nomeVariavel);
+
+        if (valorAmbiente != null && !valorAmbiente.isBlank()) {
+            return valorAmbiente;
+        }
+
+        return valorLocal;
     }
 }
