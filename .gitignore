@@ -1,1 +1,4 @@
 src/java/util/config.properties
+/build/
+/dist/
+/nbproject/private/
