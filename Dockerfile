@@ -2,7 +2,7 @@
 # STAGE 1 — BUILD
 # ==========================================
 
-FROM eclipse-temurin:21-jdk AS builder
+FROM tomcat:10.1.57-jdk21-temurin-noble AS builder
 
 ENV ANT_VERSION=1.10.14
 ENV ANT_HOME=/opt/apache-ant-${ANT_VERSION}
@@ -24,8 +24,17 @@ WORKDIR /workspace
 # Copia o projeto para dentro do container
 COPY . .
 
+COPY docker/copylibs/org-netbeans-modules-java-j2seproject-copylibstask.jar /opt/copylibs/
+COPY docker/libs/postgresql-42.7.13.jar /opt/libs/
+
+COPY docker/copylibs/org-netbeans-modules-java-j2seproject-copylibstask.jar /opt/copylibs/
+
 # Constrói o WAR usando o target "dist" do Ant
-RUN ant dist
+RUN ant \
+    -Dj2ee.server.home=/usr/local/tomcat \
+    -Dlibs.CopyLibs.classpath=/opt/copylibs/org-netbeans-modules-java-j2seproject-copylibstask.jar \
+    -Dfile.reference.postgresql-42.7.13.jar=/opt/libs/postgresql-42.7.13.jar \
+    dist
 
 
 # ==========================================
