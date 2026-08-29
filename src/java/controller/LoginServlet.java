@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 
                 response.sendRedirect(
                         request.getContextPath()
-                        + "/paginas/logins.html");
+                        + "/pages/logins.html");
 
             }
 
