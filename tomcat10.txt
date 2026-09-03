@@ -1,0 +1,43 @@
+# Lembrete
+
+(Instalação por download)
+Em apache-tomcat-10.1.59/bin/
+            bash catalina.sh run
+
+(Instalação do Arch)
+Serviço do Tomcat
+systemctl start tomcat10
+systemctl restart tomcat10
+systemctl stop tomcat10
+systemctl status tomcat10 --no-pager
+
+# Apache Tomcat - Arch Linux
+
+É o pacote `tomcat10` do Arch Linux.
+Versão: `pacman -Q tomcat10`
+
+A pasta principal do Tomcat é 
+            /usr/share/tomcat10/
+Lá você encontra
+- bin/
+- conf/ -> /etc/tomcat10/
+- lib/ -> /usr/share/java/tomcat10/
+- logs/ -> /var/log/tomcat10/
+- temp/ -> /var/tmp/tomcat10/temp/
+- webapps/ -> /var/lib/tomcat10/webapps/
+- work/ -> /var/tmp/tomcat10/work/
+
+Demais arquivos:
+- /usr/lib/systemd/system/tomcat10.service
+- /usr/lib/sysusers.d/tomcat10.conf
+- /usr/lib/tmpfiles.d/tomcat10.conf
+
+Configuração da pasta de deploy
+            sudoedit /etc/tomcat10/Catalina/EntreEntrelinhasWeb.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="/tmp/EntreEntrelinhasWeb/" relodable="true">
+</Context>
+
+# Apache Tomcat - Download
+
+Página de download: https://tomcat.apache.org/download-10.cgi
