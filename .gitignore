@@ -1,5 +1,4 @@
 src/java/util/config.properties
-src/java/util/local.properties
 .idea
 EntreEntrelinhasWeb.iml
 apache-tomcat-10.1.59/
