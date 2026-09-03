@@ -5,6 +5,7 @@
 package model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  *
@@ -17,13 +18,13 @@ public class Usuario {
     private String email;
     private String senha;
     private LocalDateTime dataCadastro;
-
+    private List<Projeto> projetos;
+    
     public Usuario() {
     }
 
     public Usuario(int id, String nomeUsuario, String nomeCompleto,
             String email, String senha, LocalDateTime dataCadastro) {
-
         this.id = id;
         this.nomeUsuario = nomeUsuario;
         this.nomeCompleto = nomeCompleto;
@@ -80,4 +81,11 @@ public class Usuario {
         this.dataCadastro = dataCadastro;
     }
     
+    public List<Projeto> getProjetos() {
+        return this.projetos;
+    }
+
+    public void setProjetos(List<Projeto> projetos) {
+        this.projetos = projetos;
+    }
 }

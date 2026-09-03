@@ -8,8 +8,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
     </head>
     <body>
@@ -19,7 +20,7 @@
 
             <nav>
 
-                <a href="pages/biblioteca.html">Biblioteca</a>
+                <a href="${pageContext.request.contextPath}/BibliotecaServlet">Biblioteca</a>
 
                 <a href="#">Perfil</a>
 
@@ -49,11 +50,41 @@
 
             <section class="novoProjeto">
 
-                <button>
+                <form action="${pageContext.request.contextPath}/CriarProjetoServlet" method="post">
+                    <div>
+                        <label for="nome">Nome</label>
+                        <input 
+                            id="nome"
+                            type="text"
+                            name="nome"
+                            placeholder="Nome do projeto"
+                            required>
+                    </div>
 
-                    ＋ Criar Novo Projeto
+                    <div>
+                        <label for="descricao">Descrição</label>
+                        <input 
+                            id="descricao"
+                            type="text"
+                            name="descricao"
+                            placeholder="Descrição do projeto"
+                            required>
+                    </div>
 
-                </button>
+                    <div>
+                        <label for="tipo">Tipo</label>
+                        <input 
+                            id="tipo"
+                            type="text"
+                            name="tipo"
+                            placeholder="Tipo do projeto"
+                            required>
+                    </div>
+
+                    <button type="submit">
+                        + Criar novo projeto
+                    </button>
+                </form>
 
             </section>
 

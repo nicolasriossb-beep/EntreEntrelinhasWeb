@@ -4,14 +4,16 @@
  */
 package controller;
 
-import dao.UsuarioDAO;
+import dao.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import java.io.IOException;
 
-import model.Usuario;
+import model.*;
+import java.util.List;
+import java.util.ArrayList;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -31,6 +33,9 @@ public class LoginServlet extends HttpServlet {
             Usuario usuario = dao.autenticar(email, senha);
 
             if (usuario != null) {
+                List<Projeto> projetos = ProjetoDAO.ler(usuario);
+                usuario.setProjetos(projetos);
+                System.out.println("Novo usuário logado. Seus projetos: " + projetos);
 
                 HttpSession sessao = request.getSession();
 
@@ -39,12 +44,11 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect(
                         request.getContextPath()
                         + "/DashboardServlet");
-
             } else {
 
                 response.sendRedirect(
                         request.getContextPath()
-                        + "/paginas/logins.html");
+                        + "/pages/logins.html");
 
             }
 
