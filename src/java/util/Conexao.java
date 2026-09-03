@@ -24,7 +24,7 @@ public class Conexao {
 
         try (InputStream arquivo = Conexao.class
                 .getClassLoader()
-                .getResourceAsStream("util/config.properties")) {
+                .getResourceAsStream("util/@local.properties")) {
 
             if (arquivo != null) {
                 propriedades.load(arquivo);
@@ -71,9 +71,10 @@ public class Conexao {
             );
         }
 
-        String url = "jdbc:postgresql://" + host + ":" + port + "/"
-                + database
-                + "?sslmode=require&channelBinding=require";
+        String url = "jdbc:postgresql://" + host + ":" + port + "/" + database;
+        if (database.equals("neondb")) {
+                 url += "?sslmode=require&channelBinding=require";
+        }
 
         try {
 
