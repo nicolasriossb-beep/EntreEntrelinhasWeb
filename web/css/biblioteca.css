@@ -70,34 +70,25 @@ margin-bottom:40px;
 
 }
 
-.novoProjeto button{
-
-width:100%;
-
-padding:20px;
-
-border:none;
-
-background:#9c5a5a;
-
-color:white;
-
-font-size:22px;
-
-border-radius:15px;
-
-cursor:pointer;
-
-transition:.3s;
-
+.novoProjeto a {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background: #9c5a5a;
+    color: white;
+    font-size: 22px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: .3s;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-.novoProjeto button:hover{
-
-background:#874848;
-
-transform:scale(1.02);
-
+.novoProjeto a:hover {
+    background: #874848;
+    transform: scale(1.02);
 }
 
 .projetos{
@@ -168,4 +159,17 @@ transition:.3s;
 
 background:#874848;
 
+}
+.card a {
+    display: inline-block;
+    padding: 12px 18px;
+    background: #9c5a5a;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: .3s;
+}
+
+.card a:hover {
+    background: #874848;
 }

@@ -112,34 +112,25 @@ margin-bottom:45px;
 
 }
 
-.novoProjeto button{
-
-width:100%;
-
-padding:22px;
-
-font-size:22px;
-
-border:none;
-
-border-radius:15px;
-
-background:#a25656;
-
-color:white;
-
-cursor:pointer;
-
-transition:.3s;
-
+.novoProjeto a {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    background: #9c5a5a;
+    color: white;
+    font-size: 22px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: .3s;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-.novoProjeto button:hover{
-
-background:#8a4545;
-
-transform:scale(1.02);
-
+.novoProjeto a:hover {
+    background: #874848;
+    transform: scale(1.02);
 }
 
 .carrossel{

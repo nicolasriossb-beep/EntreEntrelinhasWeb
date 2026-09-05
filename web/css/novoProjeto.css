@@ -1,0 +1,146 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 4 de set. de 2026, 21:37:01
+    Author     : Ryzen7RTX3050
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, serif;
+}
+
+body {
+    background: #f8f6f2;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+}
+
+header h1 {
+    color: #5a4343;
+}
+
+header a {
+    color: #8b5a5a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+main {
+    width: 70%;
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+form {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+
+.campo label {
+    margin-bottom: 10px;
+    color: #5a4343;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.campo input,
+.campo textarea {
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    background: #fdfcf9;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    border-color: #9c5a5a;
+}
+
+.campo textarea {
+    resize: vertical;
+}
+
+.acoes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.acoes a,
+.acoes button {
+    padding: 13px 22px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.acoes a {
+    background: #f1ece3;
+    color: #5a4343;
+}
+
+.acoes button {
+    background: #9c5a5a;
+    color: white;
+    transition: .3s;
+}
+
+.acoes button:hover {
+    background: #874848;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+
+    header {
+        padding: 25px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    main {
+        width: 90%;
+        margin: 30px auto;
+    }
+
+    form {
+        padding: 25px;
+    }
+
+    .acoes {
+        flex-direction: column;
+    }
+
+    .acoes a,
+    .acoes button {
+        width: 100%;
+        text-align: center;
+    }
+}
