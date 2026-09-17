@@ -59,23 +59,21 @@
                     for (Projeto projeto : projetos) {
             %>
 
-                <div class="card">
+            <div class="card">
 
-                    <h2>
-                        <%= projeto.getNome() %>
-                    </h2>
-
-                    <p>
-                        <%= projeto.getTipo() != null
+                <h2><%= projeto.getNome()%></h2>
+                
+                <p>
+                    <%= projeto.getTipo() != null
                             ? projeto.getTipo()
-                            : "Projeto sem tipo" %>
-                    </p>
+                            : "Projeto sem tipo"%>
+                </p>
 
-                    <a href="#">
-                        Abrir Projeto
-                    </a>
+                <a href="${pageContext.request.contextPath}/AbrirProjetoServlet?id=<%= projeto.getId()%>">
+                    Abrir Projeto
+                </a>
 
-                </div>
+            </div>
 
             <%
                     }

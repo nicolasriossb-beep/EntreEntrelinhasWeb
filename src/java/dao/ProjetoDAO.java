@@ -106,61 +106,63 @@ public class ProjetoDAO {
         return projetos;
     }
 
-    public Projeto buscarPorId(int projetoId)
-            throws SQLException {
+    public Projeto buscarPorId(int projetoId, int usuarioId)
+        throws SQLException {
 
-        String sql = """
-            SELECT *
-            FROM projetos
-            WHERE pro_int_id = ?
-            """;
+    String sql = """
+        SELECT *
+        FROM projetos
+        WHERE pro_int_id = ?
+        AND usu_int_id = ?
+        """;
 
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, projetoId);
+        stmt.setInt(1, projetoId);
+        stmt.setInt(2, usuarioId);
 
-            ResultSet rs = stmt.executeQuery();
+        ResultSet rs = stmt.executeQuery();
 
-            if (rs.next()) {
+        if (rs.next()) {
 
-                Projeto projeto = new Projeto();
+            Projeto projeto = new Projeto();
 
-                projeto.setId(rs.getInt("pro_int_id"));
-                projeto.setNome(rs.getString("pro_str_nome"));
-                projeto.setDescricao(
-                    rs.getString("pro_str_descricao")
+            projeto.setId(rs.getInt("pro_int_id"));
+            projeto.setNome(rs.getString("pro_str_nome"));
+            projeto.setDescricao(
+                rs.getString("pro_str_descricao")
+            );
+            projeto.setTipo(rs.getString("pro_str_tipo"));
+
+            Timestamp criacao =
+                rs.getTimestamp("pro_dta_criacao");
+
+            if (criacao != null) {
+                projeto.setDataCriacao(
+                    criacao.toLocalDateTime()
                 );
-                projeto.setTipo(rs.getString("pro_str_tipo"));
-
-                Timestamp criacao =
-                    rs.getTimestamp("pro_dta_criacao");
-
-                if (criacao != null) {
-                    projeto.setDataCriacao(
-                        criacao.toLocalDateTime()
-                    );
-                }
-
-                Timestamp ultimaEdicao =
-                    rs.getTimestamp("pro_dta_ultimaedicao");
-
-                if (ultimaEdicao != null) {
-                    projeto.setDataUltimaEdicao(
-                        ultimaEdicao.toLocalDateTime()
-                    );
-                }
-
-                projeto.setUsuarioId(
-                    rs.getInt("usu_int_id")
-                );
-
-                return projeto;
             }
-        }
 
-        return null;
+            Timestamp ultimaEdicao =
+                rs.getTimestamp("pro_dta_ultimaedicao");
+
+            if (ultimaEdicao != null) {
+                projeto.setDataUltimaEdicao(
+                    ultimaEdicao.toLocalDateTime()
+                );
+            }
+
+            projeto.setUsuarioId(
+                rs.getInt("usu_int_id")
+            );
+
+            return projeto;
+        }
     }
+
+    return null;
+}
 
     public void atualizar(Projeto projeto)
             throws SQLException {
