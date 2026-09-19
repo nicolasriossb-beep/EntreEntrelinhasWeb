@@ -179,3 +179,27 @@ background:#f1ece3;
 color:#666666;
 
 }
+
+.acoesProjeto {
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.acoesProjeto a {
+    text-decoration: none;
+    background: #f1ece3;
+    color: #8d6464;
+    padding: 15px 25px;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.acoesProjeto a:hover {
+    background: #e8ded2;
+    transform: translateY(-3px);
+}

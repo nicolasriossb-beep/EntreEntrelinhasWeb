@@ -19,6 +19,10 @@ if (!projetoId) {
         const pagina = link.getAttribute("href");
 
         link.href = `${pagina}?id=${projetoId}`;
+        
+        const linkEditar = document.getElementById("editarProjeto");
+
+        linkEditar.href = `../EditarProjetoServlet?id=${projetoId}`;
 
     });
 
@@ -32,6 +36,7 @@ if (!projetoId) {
             return response.json();
 
         })
+        
 
         .then(projeto => {
 
@@ -48,5 +53,7 @@ if (!projetoId) {
                 "📚 Projeto";
 
         });
+        
+        
 
 }

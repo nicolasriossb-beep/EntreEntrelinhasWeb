@@ -5,85 +5,119 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="model.Projeto"%>
+
+<%
+    Projeto projeto = (Projeto) request.getAttribute("projeto");
+
+    boolean editando = projeto != null;
+
+    String acao = editando
+            ? "AtualizarProjetoServlet"
+            : "CriarProjetoServlet";
+
+    String titulo = editando
+            ? "✏️ Editar Projeto"
+            : "✒️ Novo Projeto";
+
+    String botao = editando
+            ? "Salvar Alterações"
+            : "Criar Projeto";
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/novoProjeto.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title><%= titulo %></title>
+
+        <link rel="stylesheet"
+              href="${pageContext.request.contextPath}/css/novoProjeto.css">
     </head>
+
     <body>
-         <header>
-        <h1>✒️ Novo Projeto</h1>
 
-        <a href="${pageContext.request.contextPath}/DashboardServlet">
-            ← Voltar
-        </a>
-    </header>
+        <header>
+            <h1><%= titulo %></h1>
 
-    <main>
+            <a href="${pageContext.request.contextPath}/DashboardServlet">
+                ← Voltar
+            </a>
+        </header>
 
-        <form method="post"
-              action="${pageContext.request.contextPath}/CriarProjetoServlet">
+        <main>
 
-            <div class="campo">
+            <form method="post"
+                  action="${pageContext.request.contextPath}/<%= acao %>">
 
-                <label for="nome">Nome do projeto</label>
+                <% if (editando) { %>
+                    <input type="hidden"
+                           name="id"
+                           value="<%= projeto.getId() %>">
+                <% } %>
 
-                <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    maxlength="100"
-                    required
-                >
+                <div class="campo">
 
-            </div>
+                    <label for="nome">Nome do projeto</label>
 
-            <div class="campo">
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        maxlength="100"
+                        value="<%= editando ? projeto.getNome() : "" %>"
+                        required
+                    >
 
-                <label for="descricao">Descrição</label>
+                </div>
 
-                <textarea
-                    id="descricao"
-                    name="descricao"
-                    maxlength="500"
-                    rows="5"
-                ></textarea>
+                <div class="campo">
 
-            </div>
+                    <label for="descricao">Descrição</label>
 
-            <div class="campo">
+                    <textarea
+                        id="descricao"
+                        name="descricao"
+                        maxlength="500"
+                        rows="5"
+                    ><%= editando ? projeto.getDescricao() : "" %></textarea>
 
-                <label for="tipo">Tipo</label>
+                </div>
 
-                <input
-                    type="text"
-                    id="tipo"
-                    name="tipo"
-                    maxlength="50"
-                    placeholder="Ex.: Fantasia, Romance, Ficção..."
-                >
+                <div class="campo">
 
-            </div>
+                    <label for="tipo">Tipo</label>
 
-            <div class="acoes">
+                    <input
+                        type="text"
+                        id="tipo"
+                        name="tipo"
+                        maxlength="50"
+                        placeholder="Ex.: Fantasia, Romance, Ficção..."
+                        value="<%= editando ? projeto.getTipo() : "" %>"
+                    >
 
-                <a
-                    href="${pageContext.request.contextPath}/DashboardServlet"
-                    class="cancelar">
-                    Cancelar
-                </a>
+                </div>
 
-                <button type="submit">
-                    Criar Projeto
-                </button>
+                <div class="acoes">
 
-            </div>
+                    <a
+                        href="${pageContext.request.contextPath}/DashboardServlet"
+                        class="cancelar">
+                        Cancelar
+                    </a>
 
-        </form>
+                    <button type="submit">
+                        <%= botao %>
+                    </button>
 
-    </main>
+                </div>
+
+            </form>
+
+        </main>
+
     </body>
 </html>
