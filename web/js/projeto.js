@@ -7,8 +7,20 @@ const parametros = new URLSearchParams(window.location.search);
 const projetoId = parametros.get("id");
 
 if (!projetoId) {
+
     window.location.href = "../BibliotecaServlet";
+
 } else {
+
+    const links = document.querySelectorAll(".scriptorium, .personagens, .cronologia, .locais, .conflitos, .geral");
+
+    links.forEach(link => {
+
+        const pagina = link.getAttribute("href");
+
+        link.href = `${pagina}?id=${projetoId}`;
+
+    });
 
     fetch(`../ProjetoServlet?id=${projetoId}`)
         .then(response => {
@@ -18,6 +30,7 @@ if (!projetoId) {
             }
 
             return response.json();
+
         })
 
         .then(projeto => {
@@ -35,4 +48,5 @@ if (!projetoId) {
                 "📚 Projeto";
 
         });
+
 }
