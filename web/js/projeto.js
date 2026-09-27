@@ -23,6 +23,11 @@ if (!projetoId) {
         const linkEditar = document.getElementById("editarProjeto");
 
         linkEditar.href = `../EditarProjetoServlet?id=${projetoId}`;
+        
+        const idProjetoExcluir =
+                document.getElementById("idProjetoExcluir");
+
+        idProjetoExcluir.value = projetoId;
 
     });
 
@@ -53,6 +58,14 @@ if (!projetoId) {
                 "📚 Projeto";
 
         });
+       function confirmarExclusao() {
+
+        return confirm(
+                "Tem certeza que deseja excluir este projeto? " +
+                "Todos os capítulos, personagens, locais, notas, conflitos " +
+                "e eventos da cronologia também serão excluídos."
+                );
+    }
         
         
 

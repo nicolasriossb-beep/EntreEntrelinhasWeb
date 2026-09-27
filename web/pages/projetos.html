@@ -77,6 +77,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     ✏️ Editar Projeto
                 </a>
 
+                <form action="../ExcluirProjetoServlet" method="POST"
+                      onsubmit="return confirmarExclusao();">
+
+                    <input type="hidden" name="id" id="idProjetoExcluir">
+
+                    <button type="submit">
+                        🗑️ Excluir Projeto
+                    </button>
+
+                </form>
+
             </div>
 
         </main>

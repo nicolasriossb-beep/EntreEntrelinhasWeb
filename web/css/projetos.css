@@ -186,6 +186,7 @@ color:#666666;
     border-top: 1px solid #ddd;
     display: flex;
     justify-content: flex-end;
+    gap: 15px;
 }
 
 .acoesProjeto a {
@@ -200,6 +201,28 @@ color:#666666;
 }
 
 .acoesProjeto a:hover {
+    background: #e8ded2;
+    transform: translateY(-3px);
+}
+
+.acoesProjeto form {
+    margin: 0;
+}
+
+.acoesProjeto button {
+    text-decoration: none;
+    background: #f1ece3;
+    color: #8d6464;
+    padding: 15px 25px;
+    border-radius: 12px;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.acoesProjeto button:hover {
     background: #e8ded2;
     transform: translateY(-3px);
 }
