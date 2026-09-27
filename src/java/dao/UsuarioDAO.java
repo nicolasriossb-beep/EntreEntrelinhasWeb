@@ -16,7 +16,7 @@ import util.Conexao;
  * @author Ryzen7RTX3050
  */
 public class UsuarioDAO {
-     public void cadastrar(Usuario usuario) throws SQLException {
+    public void cadastrar(Usuario usuario) throws SQLException {
 
         String sql = """
             INSERT INTO usuarios
@@ -44,48 +44,83 @@ public class UsuarioDAO {
         stmt.close();
         conn.close();
     }
-    
-     public Usuario autenticar(String email, String senha) throws Exception {
 
-    Connection conn = Conexao.conectar();
+    public Usuario autenticar(String email, String senha) throws Exception {
 
-    String sql = """
-                 SELECT *
-                 FROM usuarios
-                 WHERE USU_STR_EMAIL = ?
-                 AND USU_STR_SENHA = ?
-                 """;
+        Connection conn = Conexao.conectar();
 
-    PreparedStatement ps = conn.prepareStatement(sql);
+        String sql = """
+            SELECT *
+            FROM usuarios
+            WHERE USU_STR_EMAIL = ?
+            AND USU_STR_SENHA = ?
+            """;
 
-    ps.setString(1, email);
-    ps.setString(2, senha);
+        PreparedStatement ps = conn.prepareStatement(sql);
 
-    ResultSet rs = ps.executeQuery();
+        ps.setString(1, email);
+        ps.setString(2, senha);
 
-    Usuario usuario = null;
+        ResultSet rs = ps.executeQuery();
 
-    if (rs.next()) {
+        Usuario usuario = null;
 
-        usuario = new Usuario();
+        if (rs.next()) {
 
-        usuario.setId(rs.getInt("USU_INT_ID"));
-        usuario.setNomeUsuario(rs.getString("USU_STR_NOMEUSUARIO"));
-        usuario.setNomeCompleto(rs.getString("USU_STR_NOMECOMPLETO"));
-        usuario.setEmail(rs.getString("USU_STR_EMAIL"));
-        usuario.setSenha(rs.getString("USU_STR_SENHA"));
-        usuario.setDataCadastro(
-                rs.getTimestamp("USU_DTA_CADASTRO").toLocalDateTime()
-        );
+            usuario = new Usuario();
 
+            usuario.setId(rs.getInt("USU_INT_ID"));
+            usuario.setNomeUsuario(rs.getString("USU_STR_NOMEUSUARIO"));
+            usuario.setNomeCompleto(rs.getString("USU_STR_NOMECOMPLETO"));
+            usuario.setEmail(rs.getString("USU_STR_EMAIL"));
+            usuario.setSenha(rs.getString("USU_STR_SENHA"));
+            usuario.setDataCadastro(
+                    rs.getTimestamp("USU_DTA_CADASTRO").toLocalDateTime()
+                    );
+
+        }
+
+        rs.close();
+        ps.close();
+        conn.close();
+
+        return usuario;
     }
 
-    rs.close();
-    ps.close();
-    conn.close();
 
-    return usuario;
+    public static Usuario buscarUsuario(String email) throws Exception {
 
-}
-     
+        Connection conn = Conexao.conectar();
+
+        String sql = """
+            SELECT *
+            FROM usuarios
+            WHERE USU_STR_EMAIL = ?
+            """;
+
+        PreparedStatement ps = conn.prepareStatement(sql);
+
+        ps.setString(1, email);
+
+        ResultSet rs = ps.executeQuery();
+
+        Usuario usuario = null;
+
+        if (rs.next()) {
+            usuario = new Usuario();
+            usuario.setId(rs.getInt("USU_INT_ID"));
+            usuario.setNomeUsuario(rs.getString("USU_STR_NOMEUSUARIO"));
+            usuario.setNomeCompleto(rs.getString("USU_STR_NOMECOMPLETO"));
+            usuario.setEmail(rs.getString("USU_STR_EMAIL"));
+            usuario.setSenha(rs.getString("USU_STR_SENHA"));
+            usuario.setDataCadastro(rs.getTimestamp("USU_DTA_CADASTRO").toLocalDateTime());
+        }
+
+        rs.close();
+        ps.close();
+        conn.close();
+
+        return usuario;
+    }
+
 }
