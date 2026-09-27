@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Recuperação de senha</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/login.css">
+    </head>
+    <body>
+        <div class="login-container">
+
+            <h1>Esqueceu sua senha?</h1>
+
+            <p class="subtitulo">
+                Não se preocupe, nós enviaremos sua senha por e-mail.
+            </p>
+
+            <form action="../RecuperarSenhaServlet" method="post">
+
+                <label>E-mail</label>
+
+                <input
+                type="email"
+                name="email"
+                placeholder="Digite seu e-mail"
+                required
+                >
+
+                <button type="submit">
+                    Entrar
+                </button>
+
+            </form>
+
+            <a href="../index.html" class="voltar">
+                ← Voltar para a página inicial
+            </a>
+        </div>
+    </body>
+</html>
