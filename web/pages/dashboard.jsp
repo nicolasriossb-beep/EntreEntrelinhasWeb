@@ -13,6 +13,87 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/dashboard.css">
     </head>
+    <aside class="sidebar" id="sidebar">
+
+        <button class="fechar" onclick="fecharSidebar()">×</button>
+
+        <div class="profile-photo-container">
+
+            <img
+                id="imagem-perfil2"
+                src="${pageContext.request.contextPath}/img/anonimo 2.png"
+                alt="Avatar"
+                onclick="abrirOpcoes()"
+                >
+
+            <button
+                id="botao-editarimagem"
+                onclick="abrirOpcoes()">
+                🖊
+            </button>
+
+            <div class="photo-options" id="photoOptions">
+
+                <button
+                    id="botao-editarimagem"
+                    onclick="abrirCarrossel()">
+                    🖊
+                </button>
+
+            </div>
+
+        </div>
+
+        <h2>${usuario.nomeUsuario}</h2>
+
+        <a id="alterar-senha" href="#">
+            Alterar Senha
+        </a>
+
+        <a id="excluir-conta" href="#">
+            Excluir Conta
+        </a>
+
+        <a id="sair" href="${pageContext.request.contextPath}/index.html">
+            Sair
+        </a>
+
+    </aside>
+        <div class="avatar-overlay" id="avatarOverlay">
+
+            <div class="avatar-carrossel">
+
+                <button class="avatar-fechar" onclick="fecharCarrossel()">
+                    ×
+                </button>
+
+                <button class="avatar-anterior" onclick="avatarAnterior()">
+                    ‹
+                </button>
+
+                <div class="avatar-area">
+                    <img
+                        id="avatarSelecionado"
+                        src="${pageContext.request.contextPath}/img/anonimo 2.png"
+                        alt="Avatar selecionado"
+                        >
+                </div>
+                        <button
+                            class="avatar-confirmar"
+                            onclick="selecionarAvatar()">
+                            Usar este avatar
+                        </button>
+
+                <button class="avatar-proximo" onclick="proximoAvatar()">
+                    ›
+                </button>
+
+                <div class="avatar-indicadores" id="avatarIndicadores">
+                </div>
+
+            </div>
+
+        </div>
     <body>
          <header>
 
@@ -20,11 +101,16 @@
 
             <nav>
 
-                <a href="${pageContext.request.contextPath}/BibliotecaServlet">Biblioteca</a>
+                <a href="${pageContext.request.contextPath}/BibliotecaServlet">
+                    Biblioteca
+                </a>
 
-                <a href="#">Perfil</a>
-
-                <a href="index.html">Sair</a>
+                <img
+                    id="imagem-perfil"
+                    src="${pageContext.request.contextPath}/img/anonimo 2.png"
+                    onclick="abrirSidebar()"
+                    alt="Perfil"
+                    >
 
             </nav>
 
@@ -117,5 +203,7 @@
             </section>
 
         </main>
+                <script src="${pageContext.request.contextPath}/js/script.js" defer></script>
     </body>
+    
 </html>
