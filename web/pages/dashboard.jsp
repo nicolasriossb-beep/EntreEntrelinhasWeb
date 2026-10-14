@@ -203,6 +203,18 @@
             </section>
 
         </main>
+                <script>
+    window.contextoApp =
+        "${pageContext.request.contextPath}";
+
+    window.avatarSalvo =
+        "${usuario.avatar != null ? usuario.avatar : ''}";
+                </script>
+
+                <script
+                    src="${pageContext.request.contextPath}/js/script.js"
+                    defer>
+                </script>
                 <script src="${pageContext.request.contextPath}/js/script.js" defer></script>
     </body>
     

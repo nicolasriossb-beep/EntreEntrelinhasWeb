@@ -28,6 +28,12 @@ if (!projetoId) {
                 document.getElementById("idProjetoExcluir");
 
         idProjetoExcluir.value = projetoId;
+        
+        const linkScriptorium = document.getElementById("linkScriptorium");
+
+        if (linkScriptorium) {
+            linkScriptorium.href = `../CapituloServlet?id=${projetoId}`;
+        }
 
     });
 

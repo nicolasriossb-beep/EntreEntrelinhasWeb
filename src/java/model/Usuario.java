@@ -17,6 +17,7 @@ public class Usuario {
     private String email;
     private String senha;
     private LocalDateTime dataCadastro;
+    private String avatar;
 
     public Usuario() {
     }
@@ -80,4 +81,11 @@ public class Usuario {
         this.dataCadastro = dataCadastro;
     }
     
+    public String getAvatar() {
+        return avatar;
+    }
+    
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 }

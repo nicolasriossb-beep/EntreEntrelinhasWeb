@@ -71,6 +71,7 @@ public class UsuarioDAO {
 
             usuario.setId(rs.getInt("USU_INT_ID"));
             usuario.setNomeUsuario(rs.getString("USU_STR_NOMEUSUARIO"));
+            usuario.setAvatar(rs.getString("USU_STR_AVATAR"));
             usuario.setNomeCompleto(rs.getString("USU_STR_NOMECOMPLETO"));
             usuario.setEmail(rs.getString("USU_STR_EMAIL"));
             usuario.setSenha(rs.getString("USU_STR_SENHA"));
@@ -110,6 +111,7 @@ public class UsuarioDAO {
             usuario = new Usuario();
             usuario.setId(rs.getInt("USU_INT_ID"));
             usuario.setNomeUsuario(rs.getString("USU_STR_NOMEUSUARIO"));
+            usuario.setAvatar(rs.getString("USU_STR_AVATAR"));
             usuario.setNomeCompleto(rs.getString("USU_STR_NOMECOMPLETO"));
             usuario.setEmail(rs.getString("USU_STR_EMAIL"));
             usuario.setSenha(rs.getString("USU_STR_SENHA"));
@@ -121,6 +123,24 @@ public class UsuarioDAO {
         conn.close();
 
         return usuario;
+    }
+    
+    public void atualizarAvatar(int usuarioId, String avatar)
+            throws SQLException {
+
+        String sql = """
+        UPDATE usuarios
+        SET usu_str_avatar = ?
+        WHERE usu_int_id = ?
+        """;
+
+        try (Connection conn = Conexao.conectar(); PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, avatar);
+            ps.setInt(2, usuarioId);
+
+            ps.executeUpdate();
+        }
     }
 
 }
