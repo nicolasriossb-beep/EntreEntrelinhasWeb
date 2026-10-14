@@ -20,6 +20,10 @@ public class Config {
     }
 
     public static String get(String key) {
-        return properties.getProperty(key);
+        String valor = System.getenv(key);
+        if (valor == null || valor.isBlank()) {
+            valor = properties.getProperty(key);
+        }
+        return valor;
     }
 }
