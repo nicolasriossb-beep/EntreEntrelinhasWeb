@@ -13,17 +13,23 @@ function fecharSidebar() {
 
 
 /*CARROSSEL DE AVATARES */
+const contextoApp = window.contextoApp || "";
 
 const avatares = [
-    "img/avatar01.jpeg",
-    "img/avatar02.jpeg",
-    "img/avatar03.jpeg",
-    "img/avatar04.jpeg",
-    "img/avatar05.jpeg",
-    "img/avatar06.jpeg"
+    "avatar01.jpeg",
+    "avatar02.jpeg",
+    "avatar03.jpeg",
+    "avatar04.jpeg",
+    "avatar05.jpeg",
+    "avatar06.jpeg"
 ];
 
-let avatarAtual = 0;
+const avatarPadrao = "anonimo 2.png";
+
+let avatarAtual = Math.max(
+    0,
+    avatares.indexOf(window.avatarSalvo)
+);
 
 const avatarOverlay =
     document.getElementById("avatarOverlay");
@@ -50,11 +56,10 @@ function fecharCarrossel() {
 
 
 function mostrarAvatar(indice) {
-
     avatarAtual = indice;
 
     avatarSelecionado.src =
-        avatares[avatarAtual];
+        caminhoAvatar(avatares[avatarAtual]);
 
     atualizarIndicadores();
 }
@@ -107,7 +112,73 @@ function atualizarIndicadores() {
     });
 }
 
+function caminhoAvatar(nomeArquivo) {
+    return contextoApp + "/img/" + nomeArquivo;
+}
 
+function carregarAvatarSalvo() {
+    const avatar = window.avatarSalvo;
+
+    const caminho = avatar
+        ? caminhoAvatar(avatar)
+        : caminhoAvatar(avatarPadrao);
+
+    document.getElementById("imagem-perfil").src = caminho;
+    document.getElementById("imagem-perfil2").src = caminho;
+
+    if (avatar) {
+        avatarSelecionado.src = caminhoAvatar(avatar);
+    } else {
+        avatarSelecionado.src = caminhoAvatar(avatares[0]);
+    }
+
+    atualizarIndicadores();
+}
+
+async function selecionarAvatar() {
+    const nomeArquivo = avatares[avatarAtual];
+
+    const botao = document.querySelector(".avatar-confirmar");
+
+    botao.disabled = true;
+
+    try {
+        const resposta = await fetch(
+            contextoApp + "/AtualizarAvatarServlet",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type":
+                        "application/x-www-form-urlencoded;charset=UTF-8"
+                },
+                body: new URLSearchParams({
+                    avatar: nomeArquivo
+                })
+            }
+        );
+
+        if (!resposta.ok) {
+            throw new Error("Não foi possível salvar o avatar.");
+        }
+
+        window.avatarSalvo = nomeArquivo;
+
+        document.getElementById("imagem-perfil").src =
+            caminhoAvatar(nomeArquivo);
+
+        document.getElementById("imagem-perfil2").src =
+            caminhoAvatar(nomeArquivo);
+
+        fecharCarrossel();
+
+    } catch (erro) {
+        alert("Não foi possível salvar seu avatar. Tente novamente.");
+        console.error(erro);
+
+    } finally {
+        botao.disabled = false;
+    }
+}
 /*ARRASTAR AVATAR*/
 
 let inicioArraste = 0;
@@ -145,3 +216,6 @@ avatarSelecionado.addEventListener(
 
     }
 );
+document.addEventListener("DOMContentLoaded", function () {
+    carregarAvatarSalvo();
+});
