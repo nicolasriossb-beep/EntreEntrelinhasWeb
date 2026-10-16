@@ -585,3 +585,286 @@ line-height:1.8;
     background: #5c3d3d;
     transform: translateX(-50%) scale(1.03);
 }
+
+/* ========================================
+   NAVEGAÇÃO ENTRE MENU PRINCIPAL E MURAL
+   ======================================== */
+.area-principal {
+    width: 80%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 26px 0 50px;
+}
+
+.seletor-paginas {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    margin-bottom: 24px;
+    padding: 6px;
+    background: #eee6df;
+    border: 1px solid #e2d5cc;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.aba-pagina {
+    position: relative;
+    z-index: 1;
+    min-height: 48px;
+    padding: 12px 18px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: #6f5550;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color .25s ease, background .25s ease;
+}
+
+.aba-pagina.ativa {
+    background: #7d4b4b;
+    color: #fff;
+    box-shadow: 0 3px 9px rgba(80, 45, 45, .18);
+}
+
+.aba-pagina:focus-visible {
+    outline: 3px solid #c18a76;
+    outline-offset: 2px;
+}
+
+.carrossel-paginas {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+    touch-action: pan-y;
+}
+
+.trilho-paginas {
+    display: flex;
+    align-items: flex-start;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform .45s cubic-bezier(.22, .75, .25, 1);
+    will-change: transform;
+}
+
+.painel-pagina {
+    flex: 0 0 50%;
+    width: 50%;
+    min-width: 0;
+    padding: 0 1px 8px;
+}
+
+.painel-pagina[aria-hidden="true"] {
+    /* Mantém a animação, mas impede foco acidental em conteúdo fora da tela. */
+    pointer-events: none;
+}
+
+.painel-pagina > .boasVindas,
+.painel-pagina > .novoProjeto,
+.painel-pagina > .carrossel,
+.painel-pagina > .avaliacao,
+.painel-pagina > .sobre {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.painel-pagina-mural {
+    padding: 12px 0 8px;
+}
+
+.titulo-mural {
+    margin: 0 0 8px;
+    color: #4b3b3b;
+    text-align: center;
+    font-size: 30px;
+}
+
+.descricao-mural {
+    margin: 0 auto 26px;
+    color: #666;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.historias {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.historia {
+    min-width: 0;
+    padding: 22px;
+    background: #fff;
+    border: 1px solid #eee5df;
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .06);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.historia:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(80, 45, 45, .10);
+}
+
+.historia h3 {
+    margin: 0 0 10px;
+    color: #4b3b3b;
+    font-size: 20px;
+}
+
+.historia .previa {
+    color: #5f5a58;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.historia a {
+    color: #9c5a5a;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.historia a:hover {
+    color: #7d4b4b;
+    text-decoration: underline;
+}
+
+.usuario {
+    display: block;
+    margin-top: 14px;
+    color: #827572;
+    font-size: 12px;
+}
+
+.paginacao {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.paginacao button {
+    min-width: 35px;
+    height: 35px;
+    border: 0;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.paginacao button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.pagina-atual {
+    background: #7d4b4b;
+    color: #fff;
+    font-weight: bold;
+}
+
+.seta {
+    background: transparent;
+    color: #5c3d3d;
+    font-size: 32px;
+    line-height: 1;
+}
+
+@media (max-width: 760px) {
+    header {
+        gap: 16px;
+        padding: 20px 22px;
+    }
+
+    header h1 {
+        font-size: clamp(20px, 4.5vw, 28px);
+    }
+
+    nav {
+        gap: 16px;
+    }
+
+    .area-principal {
+        width: min(92%, 680px);
+        padding-top: 18px;
+    }
+
+    .painel-pagina > .boasVindas h2 {
+        font-size: clamp(27px, 6vw, 36px);
+    }
+
+    .painel-pagina > .boasVindas p {
+        font-size: 17px;
+    }
+
+    .historias {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .titulo-mural {
+        font-size: 26px;
+    }
+
+    .historia {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 17px 15px;
+    }
+
+    header h1 {
+        max-width: 230px;
+        font-size: 19px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    #imagem-perfil {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .area-principal {
+        width: 94%;
+    }
+
+    .aba-pagina {
+        min-height: 44px;
+        padding: 10px 6px;
+        font-size: 14px;
+    }
+
+    .painel-pagina > .novoProjeto a {
+        padding: 16px 12px;
+        font-size: 18px;
+    }
+
+    .painel-pagina > .avaliacao,
+    .painel-pagina > .sobre,
+    .painel-pagina > .card {
+        padding: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .trilho-paginas,
+    .aba-pagina,
+    .historia {
+        transition: none;
+    }
+}
