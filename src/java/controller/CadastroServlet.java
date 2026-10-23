@@ -4,16 +4,18 @@
  */
 package controller;
 
-import dao.UsuarioDAO;
-import java.time.LocalDateTime;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import model.Usuario;
+import util.Config;
+import util.Resend;
+import java.net.http.HttpResponse;
 
 /**
  *
@@ -23,36 +25,57 @@ import model.Usuario;
 public class CadastroServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request,
-            HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
+            HttpSession sessao = request.getSession();
 
-            Usuario usuario = new Usuario();
+            String codigoConfirmacao = gerarCodigoConfirmacao();
+            sessao.setAttribute("codigoConfirmacao", codigoConfirmacao);
 
-            usuario.setNomeUsuario(request.getParameter("nomeUsuario"));
-            usuario.setNomeCompleto(request.getParameter("nomeCompleto"));
-            usuario.setEmail(request.getParameter("email"));
-            usuario.setSenha(request.getParameter("senha"));
+            Usuario usuarioTemp = new Usuario();
+            usuarioTemp.setNomeUsuario(request.getParameter("nomeUsuario"));
+            usuarioTemp.setNomeCompleto(request.getParameter("nomeCompleto"));
+            usuarioTemp.setEmail(request.getParameter("email"));
+            usuarioTemp.setSenha(request.getParameter("senha"));
+            sessao.setAttribute("usuarioTemp", usuarioTemp);
 
-            usuario.setDataCadastro(LocalDateTime.now());
-
-            UsuarioDAO dao = new UsuarioDAO();
-
-            dao.cadastrar(usuario);
-
-            response.sendRedirect("pages/logins.html");
+            String email = usuarioTemp.getEmail();
+            String nome = usuarioTemp.getNomeCompleto();
+            String corpoEmail = """
+                {
+                    "to": "%s",
+                    "template": {
+                        "id": "confirmacao-cadastro",
+                        "variables": {
+                            "nome": "%s",
+                            "codigo": "%s"
+                        }
+                    }
+                }
+                """.formatted(email, nome, codigoConfirmacao);
+            HttpResponse<String> httpRequest = Resend.enviarEmail(corpoEmail);
+            if (httpRequest.statusCode() == 200) {
+                response.sendRedirect("pages/cadastro-confirmar.html");
+            } else {
+                sessao.invalidate();
+                response.sendRedirect("pages/cadastro-confirmar-erro.html");
+            }
 
         } catch (Exception e) {
-
             throw new ServletException(e);
+        }
+    }
 
+    public static String gerarCodigoConfirmacao() {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < 4; i++) {
+            int digito = (int) (Math.random() * 10); // 0 a 9
+            sb.append(digito);
         }
 
+        return sb.toString();
     }
-   
-
- 
 
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+    Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+    Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Confirmação de cadastro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../css/cadastro.css">
+        <style>
+            #codigo {
+              margin: 0 auto;
+              font-size: 40px;
+              padding: 10px;
+              width: 180px;
+              letter-spacing: 8px;
+              text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="container">
+
+            <section class="card">
+
+                <div class="titulo">
+
+                    <h1>Confirmação de cadastro</h1>
+
+                    <p class="descricao">
+                        Enviamos um código por e-mail
+                    </p>
+
+                </div>
+
+                <form action="../ConfirmarCadastroServlet" method="post">
+
+                    <div class="campo">
+                        <label for="codigo">Digite o código de 4 dígitos:</label>
+                        <input
+                          type="text" 
+                          id="codigo" 
+                          name="codigo" 
+                          maxlength="4" 
+                          pattern="[0-9]*" 
+                          inputmode="numeric" 
+                          placeholder="••••"
+                          required
+                        >
+                    </div>
+
+                    <button type="submit">
+                        Confirmar cadastro
+                    </button>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </body>
+</html>
