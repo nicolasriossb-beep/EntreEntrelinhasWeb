@@ -17,6 +17,8 @@ public class Capitulo {
     private int numero;
     private String titulo;
     private String texto;
+    private String json;
+    private String html;
     private Integer quantidadePalavras;
     private LocalDateTime dataUltimaEdicao;
     private int projetoId;
@@ -26,8 +28,8 @@ public class Capitulo {
     }
 
     public Capitulo(int id, int numero, String titulo, String texto,
-            Integer quantidadePalavras, LocalDateTime dataUltimaEdicao,
-            int projetoId, boolean publico) {
+            String json, String html, Integer quantidadePalavras, 
+            LocalDateTime dataUltimaEdicao, int projetoId, boolean publico) {
 
         this.id = id;
         this.numero = numero;
@@ -69,6 +71,22 @@ public class Capitulo {
 
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    public String getJson() {
+        return json;
+    }
+
+    public void setJson(String json) {
+        this.json = json;
+    }
+
+    public String getHtml() {
+        return html;
+    }
+
+    public void setHtml(String html) {
+        this.html = html;
     }
 
     public Integer getQuantidadePalavras() {

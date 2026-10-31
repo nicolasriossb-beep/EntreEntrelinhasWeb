@@ -19,6 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=HtmlUtil.escapar(c.getTitulo())%> | EntreEntrelinhas</title>
     <link rel="stylesheet" href="<%=ctx%>/css/capitulo.css">
+    <link rel="stylesheet" href="<%=ctx%>/css/leitor.css">
 </head>
 <body>
 <header>
@@ -40,7 +41,13 @@
         <%=HtmlUtil.escapar(c.getTitulo())%>
     </h2>
 
+    <!--
     <article class="conteudo-leitura"><%=HtmlUtil.escapar(c.getTexto())%></article>
+    -->
+
+    <article class="leitura-capitulo">
+        <%=c.getHtml()%>
+    </article>
 
     <div class="acoes">
         <a class="botao"

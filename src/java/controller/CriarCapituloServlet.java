@@ -50,6 +50,8 @@ public class CriarCapituloServlet extends HttpServlet {
                     request.getParameter("numero"));
             String titulo = request.getParameter("titulo");
             String texto = request.getParameter("texto");
+            String json = request.getParameter("json");
+            String html = request.getParameter("html");
 
             if (numero < 1 || titulo == null
                     || titulo.isBlank()) {
@@ -63,6 +65,8 @@ public class CriarCapituloServlet extends HttpServlet {
             capitulo.setNumero(numero);
             capitulo.setTitulo(titulo.trim());
             capitulo.setTexto(texto);
+            capitulo.setJson(json);
+            capitulo.setHtml(html);
             capitulo.setDataUltimaEdicao(LocalDateTime.now());
             capitulo.setProjetoId(projetoId);
             capitulo.setPublico(

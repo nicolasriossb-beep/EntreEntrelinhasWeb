@@ -23,6 +23,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%=editando ? "Editar capítulo" : "Novo capítulo"%> | EntreEntrelinhas</title>
     <link rel="stylesheet" href="<%=ctx%>/css/capitulo.css">
+    <link rel="stylesheet" href="<%=ctx%>/css/editor.css">
 </head>
 <body>
 <header>
@@ -55,13 +56,28 @@
                value="<%=HtmlUtil.escapar(c.getTitulo())%>"
                class="titulo">
 
-        <label for="texto">Texto</label>
-        <textarea id="texto" name="texto"
-                  placeholder="Comece a escrever sua história..."
-                  class="texto"><%=HtmlUtil.escapar(c.getTexto())%></textarea>
+        <div class="container">
+            <!-- Barra de ferramentas -->
+            <div class="toolbar">
+              <button id="btn-dialogue" type="button" title="Alternar/Inserir Diálogo">
+                💬 Diálogo
+              </button>
+              <button id="btn-separator" type="button" title="Inserir Separador de Cena">
+                ➖ Separador
+              </button>
+              <div class="word-counter">
+                Palavras: <span class="word-count">0</span>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div id="editor">
+            </div>
+        </div>
 
         <div class="contador">
-            <span id="contagemPalavras">0 palavras</span>
+            <span class="word-count">0</span> palavras
         </div>
 
         <label class="publicacao">
@@ -84,5 +100,10 @@
 </main>
 
 <script src="<%=ctx%>/js/scriptorium.js"></script>
+
+<script>
+        window.CONTEUDO_INICIAL = <%=c.getJson()%>;
+</script>
+<script src="<%=ctx%>/js/editor.js" type="module"></script>
 </body>
 </html>
