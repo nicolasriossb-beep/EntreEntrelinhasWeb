@@ -1,0 +1,169 @@
+.container {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.container button {
+  color: black;
+}
+
+.container h1 {
+  font-family: sans-serif;
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+/* Barra de Ferramentas */
+.toolbar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+
+  /* --- Propriedades para fixar a barra --- */
+  position: sticky;
+  top: 0;                    /* Gruda no topo da janela do navegador ao rolar */
+  background-color: white;   /* Cor de fundo sólida */
+  z-index: 10;               /* Garante que a barra fique por cima do texto */
+}
+
+.toolbar button {
+  background-color: #f0f0f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.toolbar button:hover {
+  background-color: #e2e2ec;
+}
+
+/* Destaque visual no botão quando o cursor estiver em um diálogo */
+.toolbar button.is-active {
+  background-color: #6c5ce7;
+  color: #fff;
+  border-color: #6c5ce7;
+}
+
+/* Divisor na Toolbar */
+.toolbar .divider {
+  width: 1px;
+  background-color: #ddd;
+  margin: 0 0.25rem;
+}
+
+.toolbar button.btn-action {
+  background-color: #2e7d32;
+  color: white;
+  border-color: #2e7d32;
+}
+
+.toolbar button.btn-action:hover {
+  background-color: #1b5e20;
+}
+
+/* Estilo do Contador de Palavras na Toolbar */
+.word-counter {
+  margin-left: auto; /* Empurra o contador para o canto direito da barra */
+  display: flex;
+  align-items: center;
+  font-family: sans-serif;
+  font-size: 0.85rem;
+  color: #666;
+  background-color: #f8f9fa;
+  padding: 0 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.word-counter span {
+  font-weight: bold;
+  color: #2e7d32;
+  margin-left: 0.25rem;
+}
+
+/* Estilo da caixa do editor */
+#editor {
+  min-height: 300px;
+  outline: none;
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+/* O TipTap aplica a classe .ProseMirror no container editável */
+.ProseMirror {
+  outline: none;
+  min-height: 300px;
+}
+
+.ProseMirror p {
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+}
+
+/* Diálogo clássico dentro do editor */
+.ProseMirror p.dialogue {
+  margin-left: 1.5rem;
+  text-indent: 0;
+  font-style: normal;
+}
+
+/* Estilização dos Títulos dentro do Editor */
+.ProseMirror h1 {
+  font-family: sans-serif;
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #111;
+}
+
+.ProseMirror h2 {
+  font-family: sans-serif;
+  font-size: 1.4rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.ProseMirror h3 {
+  font-family: sans-serif;
+  font-size: 1.15rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* Separador (Horizontal Rule) no editor */
+.ProseMirror hr {
+  border: none;
+  margin: 2rem 0;
+  text-align: center;
+  overflow: visible;
+}
+
+.ProseMirror hr::after {
+  content: "✦   ✦   ✦";
+  display: inline-block;
+  font-size: 1.1rem;
+  color: #888;
+  letter-spacing: 0.5rem;
+}
+
+/* Estilo do Placeholder no Editor */
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+}

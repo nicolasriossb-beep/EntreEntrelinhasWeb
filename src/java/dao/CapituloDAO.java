@@ -21,9 +21,10 @@ public class CapituloDAO {
         String sql = """
             INSERT INTO capitulos
             (cap_int_numero, cap_str_titulo, cap_str_texto,
+             cap_str_json, cap_str_html,
              cap_int_quantpalavras, cap_dta_ultimaedicao,
              pro_int_id, cap_bool_publico)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
             """;
 
         try (Connection conn = Conexao.conectar();
@@ -32,10 +33,12 @@ public class CapituloDAO {
             stmt.setInt(1, c.getNumero());
             stmt.setString(2, c.getTitulo());
             stmt.setString(3, c.getTexto());
-            stmt.setInt(4, contarPalavras(c.getTexto()));
-            definirData(stmt, 5, c.getDataUltimaEdicao());
-            stmt.setInt(6, c.getProjetoId());
-            stmt.setBoolean(7, c.isPublico());
+            stmt.setString(4, c.getJson());
+            stmt.setString(5, c.getHtml());
+            stmt.setInt(6, contarPalavras(c.getTexto()));
+            definirData(stmt, 7, c.getDataUltimaEdicao());
+            stmt.setInt(8, c.getProjetoId());
+            stmt.setBoolean(9, c.isPublico());
 
             stmt.executeUpdate();
         }
@@ -97,6 +100,8 @@ public class CapituloDAO {
             SET cap_int_numero = ?,
                 cap_str_titulo = ?,
                 cap_str_texto = ?,
+                cap_str_json = ?,
+                cap_str_html = ?,
                 cap_int_quantpalavras = ?,
                 cap_dta_ultimaedicao = ?,
                 cap_bool_publico = ?
@@ -109,11 +114,13 @@ public class CapituloDAO {
             stmt.setInt(1, c.getNumero());
             stmt.setString(2, c.getTitulo());
             stmt.setString(3, c.getTexto());
-            stmt.setInt(4, contarPalavras(c.getTexto()));
-            definirData(stmt, 5, c.getDataUltimaEdicao());
-            stmt.setBoolean(6, c.isPublico());
-            stmt.setInt(7, c.getId());
-            stmt.setInt(8, c.getProjetoId());
+            stmt.setString(4, c.getJson());
+            stmt.setString(5, c.getHtml());
+            stmt.setInt(6, contarPalavras(c.getTexto()));
+            definirData(stmt, 7, c.getDataUltimaEdicao());
+            stmt.setBoolean(8, c.isPublico());
+            stmt.setInt(9, c.getId());
+            stmt.setInt(10, c.getProjetoId());
 
             stmt.executeUpdate();
         }
@@ -151,6 +158,8 @@ public class CapituloDAO {
         c.setNumero(rs.getInt("cap_int_numero"));
         c.setTitulo(rs.getString("cap_str_titulo"));
         c.setTexto(rs.getString("cap_str_texto"));
+        c.setJson(rs.getString("cap_str_json"));
+        c.setHtml(rs.getString("cap_str_html"));
 
         int palavras = rs.getInt("cap_int_quantpalavras");
         c.setQuantidadePalavras(

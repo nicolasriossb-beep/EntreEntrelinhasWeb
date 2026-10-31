@@ -73,6 +73,8 @@ public class AtualizarCapituloServlet extends HttpServlet {
             capitulo.setNumero(numero);
             capitulo.setTitulo(titulo.trim());
             capitulo.setTexto(request.getParameter("texto"));
+            capitulo.setJson(request.getParameter("json"));
+            capitulo.setHtml(request.getParameter("html"));
             capitulo.setDataUltimaEdicao(LocalDateTime.now());
             capitulo.setPublico(
                     "true".equals(request.getParameter("publico")));
