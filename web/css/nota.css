@@ -1,160 +1,158 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 17 de jul. de 2026, 21:48:53
-    Author     : Ryzen7RTX3050
-*/
-*{
 
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-font-family:Arial, Helvetica, sans-serif;
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-
-background:#f8f6f2;
-
+body {
+    background: #f8f6f2;
 }
 
-header{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:30px 60px;
-
-background:white;
-
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
 }
 
-header h1{
-
-color:#d7a52d;
-
+header h1 {
+    color: #d7a52d;
 }
 
-header a{
-
-text-decoration:none;
-
-font-weight:bold;
-
-color:#d7a52d;
-
+header a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #d7a52d;
 }
 
-main{
-
-width:75%;
-
-margin:40px auto;
-
+main {
+    width: 75%;
+    margin: 40px auto;
 }
 
-.nota{
-
-background:#fff7b5;
-
-padding:35px;
-
-border-radius:15px;
-
-box-shadow:0 8px 18px rgba(0,0,0,.12);
-
-display:flex;
-
-flex-direction:column;
-
+.nota {
+    background: #fff7b5;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 8px 18px rgba(0,0,0,.12);
 }
 
-label{
-
-margin-top:18px;
-
-margin-bottom:8px;
-
-font-weight:bold;
-
-color:#8b6a00;
-
+.nota form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
-input,
-
-textarea{
-
-padding:12px;
-
-font-size:16px;
-
-border:2px solid #e4d37d;
-
-border-radius:10px;
-
-outline:none;
-
-resize:vertical;
-
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #8b6a00;
 }
 
-.grande{
-
-min-height:300px;
-
+input, textarea {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #e4d37d;
+    border-radius: 10px;
+    outline: none;
+    resize: vertical;
 }
 
-input:focus,
-
-textarea:focus{
-
-border-color:#d7a52d;
-
+textarea {
+    min-height: 150px;
 }
 
-.botoes{
-
-display:flex;
-
-gap:15px;
-
-margin-top:30px;
-
+.grande {
+    min-height: 300px;
 }
 
-button{
-
-padding:12px 25px;
-
-border:none;
-
-border-radius:10px;
-
-background:#d7a52d;
-
-color:white;
-
-cursor:pointer;
-
-transition:.3s;
-
+input:focus, textarea:focus {
+    border-color: #d7a52d;
 }
 
-button:hover{
-
-background:#bc9027;
-
+.conteudo-nota {
+    color: #555;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    padding: 18px;
+    background: rgba(255,255,255,.45);
+    border-radius: 10px;
+    min-height: 150px;
 }
 
+.data-edicao {
+    color: #8b6a00;
+    font-size: 13px;
+    margin-top: 18px;
+}
+
+.botoes {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+button, .botoes a {
+    display: inline-block;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #d7a52d;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover, .botoes a:hover {
+    background: #bc9027;
+}
+
+.botoes a {
+    background: #f4e8b0;
+    color: #8b6a00;
+}
+
+.botoes a:hover {
+    background: #ead991;
+}
+
+.nota form + form {
+    margin-top: 15px;
+}
+
+.nota form + form button {
+    background: #c65d5d;
+}
+
+.nota form + form button:hover {
+    background: #a94747;
+}
+
+@media(max-width: 768px) {
+    header {
+        padding: 25px;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    main {
+        width: 90%;
+    }
+
+    .nota {
+        padding: 22px;
+    }
+}

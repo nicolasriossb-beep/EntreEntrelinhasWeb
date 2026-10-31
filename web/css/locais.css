@@ -156,3 +156,8 @@ background:#eef5ff;
 
 }
 
+.card {
+    text-decoration: none;
+    color: inherit;
+}
+

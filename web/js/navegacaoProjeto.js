@@ -10,14 +10,6 @@ if (!projetoId) {
 
     window.location.href = "../BibliotecaServlet";
 
-} else {
-
-    const voltar = document.getElementById("voltarProjeto");
-
-    if (voltar) {
-        voltar.href = `projetos.html?id=${projetoId}`;
-    }
-
-}
+} 
 
 

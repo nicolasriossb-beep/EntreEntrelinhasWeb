@@ -155,4 +155,16 @@ min-height:150px;
 background:#fff1f1;
 
 }
+.card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
 
+.card:link,
+.card:visited,
+.card:hover,
+.card:active {
+    text-decoration: none;
+    color: inherit;
+}

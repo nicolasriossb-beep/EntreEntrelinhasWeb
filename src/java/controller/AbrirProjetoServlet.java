@@ -78,8 +78,7 @@ public class AbrirProjetoServlet extends HttpServlet {
 
             response.sendRedirect(
                     request.getContextPath()
-                    + "/pages/projetos.html?id="
-                    + projeto.getId()
+                    + "/pages/projetos.html?id=" + projeto.getId()
             );
 
         } catch (NumberFormatException e) {
