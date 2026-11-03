@@ -6,12 +6,15 @@ package controller;
 
 import java.io.IOException;
 import java.time.LocalTime;
+import java.util.List;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 
 import model.Usuario;
+import model.Projeto;
+import dao.ProjetoDAO;
 
 @WebServlet("/DashboardServlet")
 public class DashboardServlet extends HttpServlet {
@@ -51,6 +54,12 @@ public class DashboardServlet extends HttpServlet {
         request.setAttribute("saudacao", saudacao);
 
         request.setAttribute("usuario", usuario);
+
+        try {
+            List<Projeto> projetos = ProjetoDAO.listarProjetosPublicos();
+            request.setAttribute("projetos", projetos);
+        } catch (Exception e) {
+        }
 
         request.getRequestDispatcher("/pages/dashboard.jsp")
                 .forward(request, response);

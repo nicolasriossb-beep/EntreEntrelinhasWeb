@@ -106,6 +106,63 @@ public class ProjetoDAO {
         return projetos;
     }
 
+    public static List<Projeto> listarProjetosPublicos()
+            throws SQLException {
+
+        String sql = """
+            select distinct projetos.*
+            from projetos join capitulos on projetos.pro_int_id = capitulos.pro_int_id
+            where cap_bool_publico = true;
+            """;
+
+        List<Projeto> projetos = new ArrayList<>();
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Projeto projeto = new Projeto();
+
+                projeto.setId(rs.getInt("pro_int_id"));
+                projeto.setNome(rs.getString("pro_str_nome"));
+                projeto.setDescricao(
+                    rs.getString("pro_str_descricao")
+                );
+                projeto.setTipo(rs.getString("pro_str_tipo"));
+
+
+                Timestamp criacao =
+                    rs.getTimestamp("pro_dta_criacao");
+
+                if (criacao != null) {
+                    projeto.setDataCriacao(
+                        criacao.toLocalDateTime()
+                    );
+                }
+
+                Timestamp ultimaEdicao =
+                    rs.getTimestamp("pro_dta_ultimaedicao");
+
+                if (ultimaEdicao != null) {
+                    projeto.setDataUltimaEdicao(
+                        ultimaEdicao.toLocalDateTime()
+                    );
+                }
+
+                projeto.setUsuarioId(
+                    rs.getInt("usu_int_id")
+                );
+
+                projetos.add(projeto);
+            }
+        }
+
+        return projetos;
+    }
+
     public Projeto buscarPorId(int projetoId, int usuarioId)
         throws SQLException {
 
@@ -163,6 +220,62 @@ public class ProjetoDAO {
 
     return null;
 }
+
+    public Projeto buscarPorId(int projetoId)
+        throws SQLException {
+
+        String sql = """
+            SELECT *
+            FROM projetos
+            WHERE pro_int_id = ?
+            """;
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, projetoId);
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+
+                Projeto projeto = new Projeto();
+
+                projeto.setId(rs.getInt("pro_int_id"));
+                projeto.setNome(rs.getString("pro_str_nome"));
+                projeto.setDescricao(
+                    rs.getString("pro_str_descricao")
+                );
+                projeto.setTipo(rs.getString("pro_str_tipo"));
+
+                Timestamp criacao =
+                    rs.getTimestamp("pro_dta_criacao");
+
+                if (criacao != null) {
+                    projeto.setDataCriacao(
+                        criacao.toLocalDateTime()
+                    );
+                }
+
+                Timestamp ultimaEdicao =
+                    rs.getTimestamp("pro_dta_ultimaedicao");
+
+                if (ultimaEdicao != null) {
+                    projeto.setDataUltimaEdicao(
+                        ultimaEdicao.toLocalDateTime()
+                    );
+                }
+
+                projeto.setUsuarioId(
+                    rs.getInt("usu_int_id")
+                );
+
+                return projeto;
+            }
+        }
+
+        return null;
+    }
 
     public void atualizar(Projeto projeto)
             throws SQLException {

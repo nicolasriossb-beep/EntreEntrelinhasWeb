@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<%@page import="java.util.List"%>
+<%@page import="model.Projeto"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -211,6 +215,34 @@
 
                             <div class="historias">
 
+                                <%
+                                    List<Projeto> projetos =
+                                        (List<Projeto>) request.getAttribute("projetos");
+
+                                    if (projetos != null && !projetos.isEmpty()) {
+
+                                        for (Projeto projeto : projetos) {
+                                %>
+
+                                <article class="historia">
+                                    <h3><%= projeto.getNome() %></h3>
+                                    <p class="previa">
+                                        <%= projeto.getDescricao() == null || projeto.getDescricao().isEmpty()
+                                                ? "Projeto sem descrição"
+                                                : projeto.getDescricao() %>
+                                    </p>
+
+                                    <a href="${pageContext.request.contextPath}/LerProjetoServlet?id=<%= projeto.getId()%>">
+                                        Ler mais
+                                    </a>
+                                </article>
+
+                                <%
+                                        }
+                                    }
+                                %>
+
+                                <!--
                                 <article class="historia">
                                     <h3>O Último Reino</h3>
                                     <p class="previa">Há muitos anos, o reino de Valmor enfrentava uma grande guerra. As cidades estavam sendo destruídas e ninguém sabia quanto tempo aquilo iria durar... <a href="#">LER MAIS</a></p>
@@ -246,6 +278,7 @@
                                     <p class="previa">O navio partiu antes do nascer do sol, levando uma pequena tripulação em busca de terras que não apareciam em nenhum mapa conhecido... <a href="#">LER MAIS</a></p>
                                     <span class="usuario">@Sofia</span>
                                 </article>
+                                -->
 
                             </div>
 

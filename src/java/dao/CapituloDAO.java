@@ -70,6 +70,31 @@ public class CapituloDAO {
         return lista;
     }
 
+    public List<Capitulo> listarCapitulosPublicosPorProjeto(int projetoId)
+            throws SQLException {
+        String sql = """
+            select * from capitulos
+            where pro_int_id = ? and cap_bool_publico = true
+            order by cap_int_numero ASC;
+            """;
+
+        List<Capitulo> lista = new ArrayList<>();
+
+        try (Connection conn = Conexao.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, projetoId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    lista.add(mapear(rs));
+                }
+            }
+        }
+
+        return lista;
+    }
+
     public Capitulo buscarPorId(int capituloId, int projetoId)
             throws SQLException {
         String sql = """
