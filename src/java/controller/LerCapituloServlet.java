@@ -39,13 +39,6 @@ public class LerCapituloServlet extends HttpServlet {
             int capituloId = Integer.parseInt(
                     request.getParameter("capituloId"));
 
-            if (new ProjetoDAO().buscarPorId(
-                    projetoId, usuario.getId()) == null) {
-                response.sendError(
-                        HttpServletResponse.SC_NOT_FOUND);
-                return;
-            }
-
             Capitulo capitulo = new CapituloDAO()
                     .buscarPorId(capituloId, projetoId);
 
