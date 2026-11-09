@@ -6,6 +6,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : 16 de jul. de 2026, 16:21:52
     Author     : Ryzen7RTX3050
 */
+
+
+/*
 body{
 
     margin:0;
@@ -193,3 +196,95 @@ button:hover{
     color:#b05d5d;
 
 }
+*/
+
+
+
+
+@import url("https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Kalam:wght@300;400;700&display=swap");
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; max-width: 100%; overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; scrollbar-color: rgba(139, 99, 53, .42) transparent; }
+body {
+    padding: 8px 5px;
+    color: #493522;
+    background: transparent;
+    font-family: "Kalam", "Segoe Print", "Bradley Hand", cursive;
+}
+.login-container, .container { width: 100%; min-height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: stretch; text-align: center; }
+.login-container { max-width: 420px; margin: 0 auto; }
+.logo { display: none; }
+h1, .titulo h1 {
+    margin: 0 0 8px;
+    color: #654324;
+    font: italic clamp(1.2rem, 2.1vw, 1.8rem)/1.15 "IM Fell English", Georgia, serif;
+}
+h2 { color: #704a2a; font: italic 1.05rem "IM Fell English", Georgia, serif; }
+.subtitulo, .descricao {
+    margin: 0 auto 13px;
+    max-width: 360px;
+    color: #756047;
+    font-size: clamp(.75rem, 1.1vw, .95rem);
+    line-height: 1.35;
+}
+form { display: flex; flex-direction: column; gap: 3px; }
+label {
+    margin: 7px 0 0;
+    color: #765b3e;
+    text-align: left;
+    font-size: .82rem;
+}
+input {
+    width: 100%;
+    padding: 7px 3px 5px;
+    border: 0;
+    border-bottom: 1px solid #aa8b60;
+    border-radius: 0;
+    outline: none;
+    color: #392719;
+    background: transparent;
+    font: .9rem "Kalam", "Segoe Print", cursive;
+}
+input::placeholder { color: #b09a7c; opacity: .9; }
+input:focus { border-bottom: 2px solid #80582e; box-shadow: 0 3px 4px -4px #80582e; }
+button {
+    align-self: center;
+    min-width: 150px;
+    margin-top: 17px;
+    padding: 7px 18px;
+    border: 1px solid #9a713d;
+    border-radius: 3px;
+    color: #fff4dc;
+    background: linear-gradient(135deg, #704322, #452717);
+    font: .9rem "Kalam", cursive;
+    cursor: pointer;
+    transition: .2s;
+}
+button:hover { transform: translateY(-2px); background: #81542d; }
+.links { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px 16px; margin-top: 12px; }
+a { color: #876032; text-decoration: none; font-size: .78rem; }
+a:hover { color: #4c2e18; text-decoration: underline; }
+.voltar { display: inline-block; margin-top: 12px; color: #927b5d; font-size: .72rem; }
+.card { width: 100%; padding: 0; background: transparent; box-shadow: none; border: 0; border-radius: 0; }
+.titulo { margin-bottom: 10px; }
+.titulo h1 { font-size: clamp(1.1rem, 1.9vw, 1.55rem); }
+.titulo h2 { margin: 0 0 7px; font-size: 1rem; }
+.campo { display: flex; flex-direction: column; margin-bottom: 2px; }
+.campo label { margin-top: 4px; }
+.campo input { padding-top: 3px; }
+.login { display: flex; justify-content: center; align-items: center; gap: 7px; margin-top: 8px; font-size: .75rem; }
+.login p { margin: 0; color: #806c53; }
+.login a { font-weight: bold; }
+.frase { display: none; }
+#codigo { width: 150px !important; margin: 5px auto 0 !important; padding: 6px !important; font-size: 1.7rem !important; letter-spacing: 8px !important; text-align: center !important; }
+@media (max-height: 520px) {
+    body { padding: 3px; }
+    .subtitulo, .descricao { margin-bottom: 5px; }
+    label { margin-top: 3px; }
+    button { margin-top: 8px; padding: 5px 14px; }
+    .links, .login { margin-top: 5px; }
+}
+
+*::-webkit-scrollbar { width: 5px; height: 0; }
+*::-webkit-scrollbar:horizontal { display: none; height: 0; }
+*::-webkit-scrollbar-thumb { background: rgba(139, 99, 53, .42); border-radius: 10px; }
+

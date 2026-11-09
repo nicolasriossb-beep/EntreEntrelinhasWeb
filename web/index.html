@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
 -->
-<html>
+<!-- <html>
     <head>
         <title>Entre Entrelinhas</title>
         <meta charset="UTF-8">
@@ -41,4 +41,67 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 </div>
 
 </body>
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#24130d">
+    <title>Entre Entrelinhas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/livro.js" defer></script>
+</head>
+<body>
+    <main class="cena" id="cena">
+        <div class="convite" id="convite">
+            <p>Há uma história esperando por você...</p>
+            <button class="abrir-livro" id="abrirLivro" type="button" aria-label="Abrir o livro">
+                <img src="img/capa-livro.png" alt="Capa do livro Entre Entrelinhas">
+                <span>Abrir livro</span>
+            </button>
+            <small>Clique na capa para começar</small>
+        </div>
+
+        <section class="livro" id="livro" aria-label="Livro de acesso ao Entre Entrelinhas" aria-hidden="true">
+            <img class="arte-livro" src="img/livro-aberto.png" alt="" draggable="false">
+            <div class="conteudo-livro" id="conteudoLivro">
+                <section class="pagina pagina-esquerda" aria-label="Página esquerda">
+                    <div class="painel-escolha" id="painelEscolha">
+                        <p class="sobretitulo">ENTRE ENTRELINHAS</p>
+                        <h1>Que bom ter você por aqui.</h1>
+                        <p class="texto-pagina">Continue sua jornada literária e dê vida às histórias que vivem na sua imaginação.</p>
+                        <button class="acao-pagina" type="button" data-destino="login">Entrar na minha conta</button>
+                        <p class="texto-menor">Já tem uma história esperando por você?</p>
+                    </div>
+                    <iframe class="frame-pagina" id="paginaEsquerda" title="Formulário de acesso" src="about:blank"></iframe>
+                </section>
+
+                <section class="pagina pagina-direita" aria-label="Página direita">
+                    <div class="painel-escolha painel-cadastro" id="painelCadastro">
+                        <p class="sobretitulo">UM NOVO COMEÇO</p>
+                        <h2>Escreva o primeiro capítulo.</h2>
+                        <p class="texto-pagina">Crie sua conta gratuitamente e transforme suas ideias em histórias inesquecíveis.</p>
+                        <button class="acao-pagina acao-secundaria" type="button" data-destino="cadastro">Criar minha conta</button>
+                        <p class="texto-menor">Sua próxima aventura começa aqui.</p>
+                    </div>
+                    <div class="mensagem-direita" id="mensagemDireita">
+                        <span class="ornamento">✦</span>
+                        <p>“Toda grande história começou com uma página em branco.”</p>
+                        <span class="ornamento">✦</span>
+                    </div>
+                </section>
+            </div>
+            <div class="folha-animada" id="folhaAnimada" aria-hidden="true"></div>
+            <button class="fechar-livro" id="fecharLivro" type="button" aria-label="Fechar livro" title="Fechar livro">×</button>
+        </section>
+        <p class="rodape-cena">ENTRE ENTRELINHAS <span>•</span> A sua história começa aqui</p>
+    </main>
+</body>
 </html>
+
+
