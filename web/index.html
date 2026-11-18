@@ -45,7 +45,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
 
 
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -58,19 +57,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 </head>
 <body>
     <main class="cena" id="cena">
-        <div class="convite" id="convite">
-            <p>Há uma história esperando por você...</p>
-            <button class="abrir-livro" id="abrirLivro" type="button" aria-label="Abrir o livro">
-                <img src="img/capa-livro.png" alt="Capa do livro Entre Entrelinhas">
-                <span>Abrir livro</span>
-            </button>
-            <small>Clique na capa para começar</small>
-        </div>
+        <section class="livro fechado" id="livro" aria-label="Livro de acesso ao Entre Entrelinhas">
+            <!-- Os GIFs do livro (abrindo e virando página) são tocados quadro a quadro neste canvas. -->
+            <canvas class="arte-livro" id="canvasLivro" width="1120" height="960" aria-hidden="true"></canvas>
 
-        <section class="livro" id="livro" aria-label="Livro de acesso ao Entre Entrelinhas" aria-hidden="true">
-            <img class="arte-livro" src="img/livro-aberto.png" alt="" draggable="false">
-            <div class="conteudo-livro" id="conteudoLivro">
+            <div class="convite" id="convite">
+                <p>Há uma história esperando por você...</p>
+                <small>Clique na capa para começar</small>
+            </div>
+            <button class="abrir-livro" id="abrirLivro" type="button" aria-label="Abrir o livro Entre Entrelinhas"></button>
+
+            <div class="conteudo-livro" id="conteudoLivro" aria-hidden="true">
                 <section class="pagina pagina-esquerda" aria-label="Página esquerda">
+                    <!-- Escolha inicial -->
                     <div class="painel-escolha" id="painelEscolha">
                         <p class="sobretitulo">ENTRE ENTRELINHAS</p>
                         <h1>Que bom ter você por aqui.</h1>
@@ -78,7 +77,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <button class="acao-pagina" type="button" data-destino="login">Entrar na minha conta</button>
                         <p class="texto-menor">Já tem uma história esperando por você?</p>
                     </div>
-                    <iframe class="frame-pagina" id="paginaEsquerda" title="Formulário de acesso" src="about:blank"></iframe>
+
+                    <!-- Texto de apoio que acompanha o formulário da página direita -->
+                    <div class="painel-contexto" id="painelContexto">
+                        <p class="sobretitulo" id="contextoSobretitulo">ENTRE ENTRELINHAS</p>
+                        <h2 id="contextoTitulo">Toda história tem seus bastidores.</h2>
+                        <p class="texto-pagina" id="contextoTexto"></p>
+                        <span class="ornamento">✦</span>
+                        <p class="frase-pagina">“Toda grande história começou com uma página em branco.”</p>
+                        <button class="link-voltar" id="voltarInicio" type="button">← Voltar para a página inicial</button>
+                    </div>
                 </section>
 
                 <section class="pagina pagina-direita" aria-label="Página direita">
@@ -89,19 +97,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         <button class="acao-pagina acao-secundaria" type="button" data-destino="cadastro">Criar minha conta</button>
                         <p class="texto-menor">Sua próxima aventura começa aqui.</p>
                     </div>
-                    <div class="mensagem-direita" id="mensagemDireita">
-                        <span class="ornamento">✦</span>
-                        <p>“Toda grande história começou com uma página em branco.”</p>
-                        <span class="ornamento">✦</span>
-                    </div>
+
+                    <!-- Formulários (login, cadastro, recuperação...) ficam na página direita -->
+                    <iframe class="frame-pagina" id="paginaDireita" title="Formulário de acesso" src="about:blank"></iframe>
                 </section>
             </div>
-            <div class="folha-animada" id="folhaAnimada" aria-hidden="true"></div>
+
             <button class="fechar-livro" id="fecharLivro" type="button" aria-label="Fechar livro" title="Fechar livro">×</button>
         </section>
         <p class="rodape-cena">ENTRE ENTRELINHAS <span>•</span> A sua história começa aqui</p>
     </main>
 </body>
 </html>
-
-
