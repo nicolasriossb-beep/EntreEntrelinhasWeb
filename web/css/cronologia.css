@@ -1,194 +1,358 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 17 de jul. de 2026, 21:03:52
-    Author     : Ryzen7RTX3050
-*/
-*{
-
-margin:0;
-
-padding:0;
-
-box-sizing:border-box;
-
-font-family:Arial, Helvetica, sans-serif;
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-body{
-
-background:#f8f6f2;
-
+body {
+    background: #f8f6f2;
+    color: #444;
 }
 
-header{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:30px 60px;
-
-background:white;
-
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 60px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
 }
 
-header h1{
-
-color:#8a6db5;
-
+header h1 {
+    color: #8a6db5;
 }
 
-header a{
-
-text-decoration:none;
-
-color:#8a6db5;
-
-font-weight:bold;
-
+header a {
+    text-decoration: none;
+    color: #8a6db5;
+    font-weight: bold;
 }
 
-main{
-
-width:80%;
-
-margin:40px auto;
-
+main {
+    width: 85%;
+    max-width: 1100px;
+    margin: 40px auto;
 }
 
-.topo{
-
-background:#8a6db5;
-
-color:white;
-
-padding:30px;
-
-border-radius:18px;
-
-margin-bottom:40px;
-
+.topo {
+    background: #8a6db5;
+    color: white;
+    padding: 30px;
+    border-radius: 18px;
+    margin-bottom: 25px;
 }
 
-.timeline{
-
-border-left:5px solid #8a6db5;
-
-padding-left:35px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:35px;
-
+.topo h2 {
+    margin-bottom: 10px;
 }
 
-.evento{
-
-display:flex;
-
-align-items:flex-start;
-
-gap:20px;
-
-position:relative;
-
+.acoes-topo {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 25px;
 }
 
-.bolinha{
-
-width:20px;
-
-height:20px;
-
-background:#8a6db5;
-
-border-radius:50%;
-
-margin-left:-46px;
-
-margin-top:10px;
-
+button {
+    border: none;
+    cursor: pointer;
+    border-radius: 9px;
+    padding: 11px 18px;
+    background: #8a6db5;
+    color: white;
+    font-weight: bold;
+    transition: .2s;
 }
 
-.conteudo{
-
-background:white;
-
-padding:20px;
-
-border-radius:15px;
-
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-
-flex:1;
-
-transition:.3s;
-
-cursor:pointer;
-
+button:hover {
+    background: #72549d;
 }
 
-.conteudo:hover{
-
-transform:translateX(8px);
-
+.secundario {
+    background: #e9e3f1;
+    color: #6a5291;
 }
 
-.conteudo h3{
-
-color:#6a5291;
-
-margin-bottom:8px;
-
+.secundario:hover {
+    background: #dcd1eb;
 }
 
-.conteudo p{
-
-color:#666;
-
+.formulario-evento {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 35px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
 }
 
-.novo{
-
-margin-top:15px;
-
-width:70px;
-
-height:70px;
-
-border:3px dashed #8a6db5;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:40px;
-
-color:#8a6db5;
-
-cursor:pointer;
-
-transition:.3s;
-
+.formulario-evento h2 {
+    color: #6a5291;
+    margin-bottom: 20px;
 }
 
-.novo:hover{
-
-background:#efe8fa;
-
+.formulario-evento form,
+.formulario-edicao {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
 }
 
+label {
+    font-weight: bold;
+    color: #6a5291;
+    margin-top: 8px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d8cde8;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    padding: 20px 0;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 5px;
+    background: #8a6db5;
+    border-radius: 5px;
+    transform: translateX(-50%);
+}
+
+.evento {
+    position: relative;
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    cursor: grab;
+}
+
+.evento:active {
+    cursor: grabbing;
+}
+
+.evento:nth-child(odd) {
+    justify-content: flex-start;
+    padding-right: 53%;
+}
+
+.evento:nth-child(even) {
+    justify-content: flex-end;
+    padding-left: 53%;
+}
+
+.marcador {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.bolinha {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 5px solid #8a6db5;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #f8f6f2;
+}
+
+.bolinha:hover {
+    background: #cbb8e4;
+}
+
+.evento.aberto .bolinha {
+    background: #8a6db5;
+}
+
+.conteudo {
+    width: 100%;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    transition: .2s;
+}
+
+.conteudo h3 {
+    color: #6a5291;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+}
+
+.conteudo:hover {
+    transform: translateY(-3px);
+}
+
+.detalhes {
+    margin-top: 18px;
+    border-top: 1px solid #eee7f5;
+    padding-top: 15px;
+}
+
+.descricao {
+    color: #666;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    max-height: 260px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.botoes-evento {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+.botoes-evento form {
+    margin: 0;
+}
+
+.excluir {
+    background: #b75b65;
+}
+
+.excluir:hover {
+    background: #963e48;
+}
+
+.formulario-edicao {
+    margin-top: 15px;
+}
+
+.novo {
+    position: relative;
+    z-index: 2;
+    align-self: center;
+    width: 65px;
+    height: 65px;
+    border: 3px dashed #8a6db5;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: #8a6db5;
+    background: #f8f6f2;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.novo:hover {
+    background: #efe8fa;
+    transform: scale(1.08);
+}
+
+.vazio {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.vazio h3 {
+    color: #6a5291;
+    margin-bottom: 10px;
+}
+
+.dica-arrastar {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.evento.arrastando {
+    opacity: .5;
+    cursor: grabbing;
+    z-index: 10;
+}
+
+.evento.destino {
+    border-top: 3px dashed #8a6db5;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 700px) {
+
+    header {
+        padding: 22px;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    main {
+        width: 92%;
+        margin: 25px auto;
+    }
+
+    .timeline {
+        padding-left: 35px;
+    }
+
+    .timeline::before {
+        left: 12px;
+        transform: none;
+    }
+
+    .evento:nth-child(odd),
+    .evento:nth-child(even) {
+        justify-content: flex-start;
+        padding: 0;
+        padding-left: 25px;
+    }
+
+    .marcador {
+        left: -23px;
+        transform: none;
+    }
+
+    .conteudo {
+        width: 100%;
+    }
+
+    .acoes-topo {
+        justify-content: stretch;
+    }
+
+    .acoes-topo button {
+        width: 100%;
+    }
+}
